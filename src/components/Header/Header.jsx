@@ -1,0 +1,95 @@
+import "./header.css";
+import React, { useEffect, useRef } from "react";
+import { Container, Row, Button } from "react-bootstrap";
+import { NavLink, Link } from "react-router-dom";
+
+import logo from "../../assets/imgs/venturo-logo.png";
+
+const navLinks = [
+  {
+    path: "/home",
+    display: "Home",
+  },
+  {
+    path: "/tours",
+    display: "Tours",
+  },
+  {
+    path: "/contact",
+    display: "Contact Us",
+  },
+];
+
+export const Header = () => {
+  const headerRef = useRef(null);
+
+  const stickyHeaderFunc = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 56 ||
+        document.documentElement.scrollTop > 56
+      ) {
+        headerRef.current.classList.add("sticky-header");
+      } else {
+        headerRef.current.classList.remove("sticky-header");
+      }
+    });
+  };
+
+  useEffect(() => {
+    stickyHeaderFunc();
+    return window.removeEventListener("scroll", stickyHeaderFunc);
+  });
+
+  return (
+    <header className="header" ref={headerRef}>
+      <Container>
+        <Row>
+          <div className="navbar">
+            {/* Logo */}
+            <div className="logo-container">
+              <img src={logo} alt="" />
+            </div>
+            {/* ---- */}
+            {/* menu */}
+            <div className="navigation-menu">
+              <ul className="menu">
+                {navLinks.map((link, i) => (
+                  <li className="menu-link" key={i}>
+                    <NavLink
+                      to={link.path}
+                      className={({ isActive, isPending }) =>
+                        isPending
+                          ? "menu-link"
+                          : isActive
+                          ? "li-selected"
+                          : "menu-link"
+                      }
+                    >
+                      {" "}
+                      {link.display}{" "}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* ---- */}
+            <div className="nav-buttons">
+              <div className="nav-user">
+                <Button variant="warning">
+                  <Link to="/login">Login</Link>
+                </Button>
+                <Button variant="secondary">
+                  <Link to="/register">Register</Link>
+                </Button>
+              </div>
+              <span className="mobile-menu">
+                <i class="bi bi-list"></i>
+              </span>
+            </div>
+          </div>
+        </Row>
+      </Container>
+    </header>
+  );
+};
