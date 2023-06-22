@@ -1,4 +1,4 @@
-# Ventruo 
+# Venturo 
 
 🚀 Bootcamp Capstone Project
 
