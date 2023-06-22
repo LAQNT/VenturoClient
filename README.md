@@ -1,10 +1,10 @@
 # Venturo 
 
-🚀 Bootcamp Capstone Project
+🚀 find your next tour
 
 ## Description
 
-📚 This repository contains my capstone project for the Epicode Bootcamp. The project is an application that search travel tours.
+📚 This repository contains my capstone project for the Epicode Bootcamp. The project is an application that search and organize tours.
 
 ## Features
 
