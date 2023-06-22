@@ -1,6 +1,6 @@
 # Venturo 
 
-🚀 find your next tour
+🚀 Find your next tour
 
 ## Description
 
