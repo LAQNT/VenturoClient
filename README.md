@@ -4,7 +4,7 @@
 
 ## Description
 
-📚 This repository contains the front-end code for my capstone project for the Epicode Bootcamp. The project is an application that search and organize tours.
+📚 This repository contains the front-end code for my capstone project for the Epicode Bootcamp. The project is a web application that helps the user search and organize tours.
 
 ## Features
 
