@@ -7,6 +7,7 @@ import CarouselHome from "../components/Carousel/Carousel";
 import Subtitle from "./../shared/Subtitle";
 import SearchBar from "../shared/SearchBar";
 import ServiceList from "../services/ServiceList";
+import FeaturedToursList from "../components/FeaturedTours/FeaturedToursList";
 
 const Home = () => {
   return (
@@ -46,6 +47,7 @@ const Home = () => {
               {/* <Subtitle subtitle={"Explore"} /> */}
               <h2 className="category-title">Featured Tours</h2>
             </Col>
+            <FeaturedToursList />
           </Row>
         </Container>
       </section>
