@@ -7,6 +7,7 @@ import TourDetails from "./../pages/TourDetails";
 import Login from "./../pages/Login";
 import Register from "./../pages/Register";
 import SearchResult from "./../pages/SearchResult";
+import BackOffice from "../pages/BackOffice";
 
 export const Routers = () => {
   return (
@@ -19,6 +20,7 @@ export const Routers = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/tours/search" element={<SearchResult />} />
+      <Route path="/backoffice" element={<BackOffice />} />
     </Routes>
   );
 };

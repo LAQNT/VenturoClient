@@ -5,21 +5,7 @@ import StarsReview from "../components/StarsReview/StarsReview";
 import "./tour-card.css";
 
 const TourCard = ({ tour }) => {
-  const {
-    id,
-    title,
-    city,
-    address,
-    distance,
-    photo,
-    desc,
-    price,
-    numberOfPeople,
-    difficulty,
-    avgRating,
-    reviews,
-    featured,
-  } = tour;
+  const { id, title, city, address, photo, price, avgRating, reviews } = tour;
 
   return (
     <Card className="tour-card">
@@ -43,8 +29,6 @@ const TourCard = ({ tour }) => {
             <span>({reviews.length} reviews)</span>
           </div>
         </div>
-        {/* <div className="card-middle"></div> */}
-
         <div className="card-bottom">
           <h5>
             €{price} <span> per person</span>{" "}

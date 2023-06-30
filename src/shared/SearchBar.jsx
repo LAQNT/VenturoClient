@@ -7,13 +7,20 @@ const SearchBar = () => {
   const locationRef = useRef();
   const distanceRef = useRef();
   const groupRef = useRef();
+  const difficultyRef = useRef();
 
   const searchHandler = () => {
     const location = locationRef.current.value;
     const distance = distanceRef.current.value;
     const group = groupRef.current.value;
+    const difficulty = difficultyRef.current.value;
 
-    if (location === "" || distance === "" || group === "") {
+    if (
+      location === "" ||
+      distance === "" ||
+      group === "" ||
+      difficulty === ""
+    ) {
       return alert("All fields are required");
     }
   };
@@ -24,49 +31,57 @@ const SearchBar = () => {
         <div className="search-bar">
           <Form className="search-form">
             <FormGroup className="form-group">
-              <span>
-                <i class="bi bi-geo-alt"></i>
-              </span>
-
               <div className="input-label">
+                <span>
+                  <i class="bi bi-geo-alt"></i>
+                </span>
+
                 <h6>Location</h6>
-                <input
-                  type="text"
-                  placeholder="Where are you going?"
-                  ref={locationRef}
-                />
               </div>
+              <input
+                type="text"
+                placeholder="Where are you going?"
+                ref={locationRef}
+              />
             </FormGroup>
             <FormGroup className="form-group">
-              <span>
-                <i class="bi bi-broadcast"></i>
-              </span>
-
               <div className="input-label">
+                <span>
+                  <i class="bi bi-broadcast"></i>
+                </span>
                 <h6>Distance</h6>
-                <input
-                  type="number"
-                  placeholder="Distance km"
-                  ref={distanceRef}
-                />
               </div>
+              <input
+                type="number"
+                placeholder="Distance km"
+                ref={distanceRef}
+              />
             </FormGroup>
             <FormGroup className="form-group">
-              <span>
-                <i class="bi bi-person-add"></i>
-              </span>
-
               <div className="input-label">
+                <span>
+                  <i class="bi bi-person-add"></i>
+                </span>
                 <h6>Max. people</h6>
-                <input type="numer" placeholder="0" ref={groupRef} />
               </div>
+              <input type="numer" placeholder="0" ref={groupRef} />
+            </FormGroup>
+            <FormGroup className="form-group">
+              <div className="input-label">
+                <span>
+                  <i class="bi bi-bar-chart"></i>
+                </span>
+
+                <h6>Difficulty</h6>
+              </div>
+              <input type="text" placeholder="" ref={difficultyRef} />
             </FormGroup>
             <Button
               variant="warning"
               id="search-button"
               onClick={searchHandler}
             >
-              <i class="bi bi-search"></i>
+              <i class="bi bi-search"></i> Search
             </Button>
           </Form>
         </div>
