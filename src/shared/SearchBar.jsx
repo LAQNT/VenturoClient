@@ -15,12 +15,7 @@ const SearchBar = () => {
     const group = groupRef.current.value;
     const difficulty = difficultyRef.current.value;
 
-    if (
-      location === "" ||
-      distance === "" ||
-      group === "" ||
-      difficulty === ""
-    ) {
+    if (location === "" || distance === "") {
       return alert("All fields are required");
     }
   };

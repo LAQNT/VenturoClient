@@ -15,17 +15,22 @@
 
 .card-featured {
   position: absolute;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   font-weight: 600;
   border-radius: 0.5rem 0 0.5rem 0;
   width: fit-content;
-  padding: 0.3rem 0.5rem;
+  padding: 0.1rem 0.5rem;
   background-color: rgb(147, 237, 105);
 }
 
 .tour-card a {
   text-decoration: none;
   color: black;
+}
+
+.tour-title {
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .tour-title a {
@@ -57,6 +62,16 @@
   justify-content: space-between;
 }
 
+.card-top > div:first-of-type {
+  width: 60%;
+
+  text-overflow: ellipsis;
+}
+
+.card-top .tour-rating {
+  align-items: end;
+}
+
 .tour-card .bi-geo-alt {
   font-size: 1rem;
   margin-right: 0.5rem;
@@ -65,18 +80,38 @@
 .tour-rating {
   display: flex;
   align-items: center;
+  justify-items: right;
+}
+
+.tour-rating span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  justify-self: right;
 }
 
 .card-bottom {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.tour-card .btn {
+  padding: 0.1rem 0.5rem;
 }
 
 .card-bottom a {
-  font-weight: 600;
+  line-height: 1.7rem;
+  font-size: 0.8rem;
+  font-weight: 400;
   color: rgb(255, 255, 255);
 }
 
 .tour-rating {
   display: flex;
+}
+
+h5 span {
+  font-size: 0.8rem;
+  font-weight: 400;
 }
