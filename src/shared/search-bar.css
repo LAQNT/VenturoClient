@@ -17,23 +17,26 @@
 
 .form-group {
   display: flex;
-  gap: 1rem;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .input-label {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  gap: 0.5rem;
+}
+
+.input-label h6 {
+  margin: 0;
 }
 
 span i {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 #search-button {
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
   align-self: center;
 }
 
@@ -41,7 +44,7 @@ span i {
   .search-form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.7rem;
     justify-content: space-around;
     align-items: center;
     margin-top: 2rem;
@@ -49,11 +52,7 @@ span i {
     padding: 1.5rem;
   }
 
-  .form-group {
-    gap: 1rem;
-  }
-
   span i {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
   }
 }
