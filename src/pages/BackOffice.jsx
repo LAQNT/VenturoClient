@@ -18,12 +18,12 @@ function BackOffice() {
               </Form.Group>
 
               <Form.Group className="mt-4">
-                <Form.Label>Location (town, city):</Form.Label>
+                <Form.Label>Image URL:</Form.Label>
                 <Form.Control type="text" />
               </Form.Group>
 
               <Form.Group className="mt-4">
-                <Form.Label>Image URL:</Form.Label>
+                <Form.Label>Location (town, city):</Form.Label>
                 <Form.Control type="text" />
               </Form.Group>
 

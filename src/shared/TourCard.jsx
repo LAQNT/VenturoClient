@@ -9,8 +9,10 @@ const TourCard = ({ tour }) => {
 
   return (
     <Card className="tour-card">
-      <img src={photo} alt="tour-img" />
-      <span className="card-featured">Best Deal</span>
+      <div className="img-container">
+        <span className="card-featured">Best Deal</span>
+        <img src={photo} alt="tour-img" />
+      </div>
       <div className="tour-card-body">
         <div className="card-top">
           <div>

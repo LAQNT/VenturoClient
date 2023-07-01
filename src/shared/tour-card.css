@@ -7,9 +7,19 @@
   position: relative;
 }
 
-.tour-card img {
-  border-radius: 0.5rem 0.5rem 0 0;
+.img-container {
+  position: relative;
+  object-position: center;
+  height: 12rem;
   overflow: hidden;
+  z-index: 0;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.tour-card img {
+  width: 35rem;
+  object-fit: contain;
+  border-radius: 0.5rem 0.5rem 0 0;
   z-index: 0;
 }
 
