@@ -1,0 +1,25 @@
+.actions button {
+  padding: 0.1rem 0.4rem;
+  margin: 0 0.1rem;
+}
+
+td {
+  max-width: 6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+button a {
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+table button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.form-label {
+  font-weight: 600;
+}

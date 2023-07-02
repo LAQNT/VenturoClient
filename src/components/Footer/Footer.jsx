@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./footer.css";
+import logo from "../../assets/imgs/venturo-logo.png";
 
 export const Footer = () => {
   return (
@@ -46,6 +47,10 @@ export const Footer = () => {
         <div className="footer-middle">
           {/* <Row> */}
           <Col>
+            <img src={logo} alt="" />
+            <p>Find your next adventure.</p>
+          </Col>
+          <Col className="column-list">
             <ul>
               <li>
                 <a href="">Countries</a>
@@ -64,7 +69,7 @@ export const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col>
+          <Col className="column-list">
             <ul>
               <li>
                 <a href="">Countries</a>
@@ -83,7 +88,7 @@ export const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col>
+          <Col className="column-list">
             <ul>
               <li>
                 <a href="">Countries</a>
@@ -106,16 +111,16 @@ export const Footer = () => {
             <ul>
               <li>Contact us</li>
               <li>
-                <a href="">Countries</a>
+                <i class="bi bi-telephone"> </i>
+                <span> +39 3494958977</span>
               </li>
               <li>
-                <a href="">Countries</a>
+                <i class="bi bi-envelope"> </i>
+                <span> laura.quintero.a@hotmail.com</span>
               </li>
               <li>
-                <a href="">Countries</a>
-              </li>
-              <li>
-                <a href="">Countries</a>
+                <i class="bi bi-geo"> </i>
+                <span> Milano, Italy</span>
               </li>
             </ul>
           </Col>
@@ -123,7 +128,7 @@ export const Footer = () => {
         </div>
       </Container>
       <div className="footer-bottom container-fluid">
-        <p>© 2023 Copyright: Laura Quintero Agudelo</p>
+        © 2023 Copyright: Laura Quintero Agudelo
       </div>
     </footer>
   );

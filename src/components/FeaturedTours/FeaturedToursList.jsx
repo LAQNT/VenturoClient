@@ -4,8 +4,6 @@ import axios from "axios";
 import { Col, Row, Container } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
 
-const apiToursURL = `http://localhost:3001/tours`;
-
 const FeaturedToursList = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +14,7 @@ const FeaturedToursList = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(apiToursURL);
+      const response = await axios.get(`http://localhost:3001/tours`);
       setData(response.data);
       setIsLoading(false);
     } catch (error) {

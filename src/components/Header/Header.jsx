@@ -23,23 +23,43 @@ const navLinks = [
 export const Header = () => {
   const headerRef = useRef(null);
 
-  const stickyHeaderFunc = () => {
-    window.addEventListener("scroll", () => {
+  useEffect(() => {
+    const stickyHeaderFunc = () => {
       if (
-        document.body.scrollTop > 56 ||
-        document.documentElement.scrollTop > 56
+        document.body.scrollTop > 1 ||
+        document.documentElement.scrollTop > 1
       ) {
         headerRef.current.classList.add("sticky-header");
       } else {
         headerRef.current.classList.remove("sticky-header");
       }
-    });
-  };
+    };
 
-  useEffect(() => {
-    stickyHeaderFunc();
-    return window.removeEventListener("scroll", stickyHeaderFunc);
-  });
+    window.addEventListener("scroll", stickyHeaderFunc);
+
+    return () => {
+      window.removeEventListener("scroll", stickyHeaderFunc);
+    };
+  }, []);
+
+  // const stickyHeaderFunc = () => {
+  //   window.addEventListener("scroll", () => {
+  //     if (
+  //       document.body.scrollTop > 1 ||
+  //       document.documentElement.scrollTop > 1
+  //     ) {
+  //       headerRef.current.classList.add("sticky-header");
+  //     } else {
+  //       headerRef.current.classList.remove("sticky-header");
+  //     }
+  //   });
+  //   window.addEventListener("scroll", stickyHeaderFunc);
+  // };
+
+  // useEffect(() => {
+  //   stickyHeaderFunc();
+  //   return window.removeEventListener("scroll", stickyHeaderFunc);
+  // });
 
   return (
     <header className="header" ref={headerRef}>

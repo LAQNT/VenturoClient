@@ -57,7 +57,7 @@ const SearchBar = () => {
                 <span>
                   <i class="bi bi-person-add"></i>
                 </span>
-                <h6>Max. people</h6>
+                <h6>Traveler/s</h6>
               </div>
               <input type="numer" placeholder="0" ref={groupRef} />
             </FormGroup>

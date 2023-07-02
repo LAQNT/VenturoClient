@@ -1,5 +1,5 @@
 * {
-  font-size: 1rem;
+  font-size: 0.97rem;
 }
 
 .header {
@@ -25,9 +25,9 @@
 }
 
 .logo-container img {
-  height: 3rem;
-  width: 6rem;
-  margin: 0.7rem 0;
+  height: 2.5rem;
+  width: 5rem;
+  margin: 0.3rem 0;
 }
 
 .menu {
@@ -67,10 +67,11 @@
   text-decoration: none;
   color: rgb(55, 55, 55);
   font-weight: 600;
+  font-size: 0.9rem;
 }
 
 .nav-user button {
-  border-radius: 1.2rem;
+  padding: 0.2rem 0.5rem;
 }
 
 .btn-secondary a {

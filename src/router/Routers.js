@@ -7,7 +7,9 @@ import TourDetails from "./../pages/TourDetails";
 import Login from "./../pages/Login";
 import Register from "./../pages/Register";
 import SearchResult from "./../pages/SearchResult";
-import BackOffice from "../pages/BackOffice";
+import BackOffice from "../pages/BackOffice/BackOffice";
+import BackOfficeEditTour from "../pages/BackOffice/BackOfficeEditTour";
+import BackOfficeAddTour from "../pages/BackOffice/BackOfficeAddTour";
 
 export const Routers = () => {
   return (
@@ -21,6 +23,8 @@ export const Routers = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/tours/search" element={<SearchResult />} />
       <Route path="/backoffice" element={<BackOffice />} />
+      <Route path="/backoffice/editTour" element={<BackOfficeEditTour />} />
+      <Route path="/backoffice/addTour" element={<BackOfficeAddTour />} />
     </Routes>
   );
 };
