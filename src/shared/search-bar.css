@@ -7,12 +7,14 @@
 
 .search-form {
   display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
+  justify-content: space-around;
+  margin-top: -1rem;
   width: 100%;
-  border-radius: 1rem;
-  padding: 2rem;
+  border-radius: 0.5rem;
+  padding: 0.85rem 1.5rem 1.2rem 1.5rem;
   box-shadow: 5px 2px 15px rgb(189, 189, 189);
+  z-index: 3;
+  background-color: white;
 }
 
 .form-group {
@@ -47,9 +49,9 @@ span i {
     gap: 1.7rem;
     justify-content: space-around;
     align-items: center;
-    margin-top: 2rem;
-    max-width: 20rem;
-    padding: 1.5rem;
+    margin-top: -1rem;
+    max-width: 15rem;
+    padding: 1.5rem 0;
   }
 
   span i {
