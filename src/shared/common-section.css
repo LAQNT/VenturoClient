@@ -1,0 +1,23 @@
+.common-section {
+}
+
+.common-img-container {
+  height: 25rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.common-section h2 {
+  position: absolute;
+  left: 43%;
+  top: 30%;
+  z-index: 2;
+}
+
+.common-section img {
+  /* margin: auto; */
+  object-fit: fill;
+  width: 100%;
+  bottom: 0;
+  z-index: 0;
+}

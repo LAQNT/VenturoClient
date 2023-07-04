@@ -1,27 +1,46 @@
 import axios from "axios";
-import { React, useState } from "react";
-
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 import "../../styles/back-office.css";
-import { Link } from "react-router-dom";
+import TourFormBackOffice from "../../components/TourFormBackOffice/TourFormBackOffice";
 
 function BackOfficeEditTour() {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formActual, setFormActual] = useState({});
+  const { tourId } = useParams();
+
   const [formData, setFormData] = useState({
-    title: "",
-    city: "",
-    address: "",
-    distance: "",
-    photo: "",
-    desc: "",
-    price: 0,
-    numberOfPeople: 0,
-    dificulty: "",
-    featured: false,
+    title: formActual.title,
+    city: formActual.city,
+    address: formActual.address,
+    distance: formActual.distance,
+    photo: formActual.photo,
+    desc: formActual.desc,
+    price: formActual.price,
+    numberOfPeople: formActual.numberOfPeople,
+    dificulty: formActual.dificulty,
+    featured: formActual.featured,
   });
 
+  const fetchTourData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3001/tours/${tourId}`);
+      const tourData = response.data;
+      setFormActual(tourData);
+    } catch (error) {
+      console.error("Error fetching tour data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTourData();
+  }, [tourId]);
+
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const inputValue = type === "checkbox" ? checked : value;
+    const { name, value } = e.target;
+    const inputValue = value;
+
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: inputValue,
@@ -29,142 +48,38 @@ function BackOfficeEditTour() {
   };
 
   const handleSubmit = async (e) => {
+    setFormSubmitted(true);
     e.preventDefault();
 
     try {
-      const response = await axios.put("/tours", formData);
-      console.log("Tour created:", response.data);
-      // Perform any additional actions after successful creation
+      const response = await axios.patch(
+        `http://localhost:3001/tours/${tourId}`,
+        formData
+      );
+      console.log("Tour updated:", response.data);
+      window.location.href = "/backOffice";
     } catch (error) {
-      console.error("Error making POST request:", error);
-      // Handle error condition
+      console.error("Error making PUT request:", error);
     }
   };
+
   return (
-    <>
-      <Container className="mt-5">
-        <h2 className="text-center">Edit Tour</h2>
-        <Row>
-          <Col sm="10" className="m-auto">
-            <Form onSubmit={handleSubmit}>
-              <Form.Group className=" mt-3">
-                <Form.Label>Tour Title:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-
-              <Form.Group className="mt-4">
-                <Form.Label>Image URL:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="title"
-                  value={formData.photo}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-
-              <Form.Group className="mt-4">
-                <Form.Label>Location (town, city):</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-
-              <Form.Group className="mt-4">
-                <Form.Label>Country:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-
-              <Form.Group className="mt-4">
-                <Form.Label>Distance:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="distance"
-                  value={formData.distance}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-
-              <Form.Group className="mt-4">
-                <Form.Label>Description:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="desc"
-                  value={formData.desc}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-
-              <Form.Group className="mt-4">
-                <Form.Label>Price:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-
-              <Form.Group className="mt-4">
-                <Form.Label>Number of participants:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="numberOfPeople"
-                  value={formData.numberOfPeople}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-
-              <Form.Group className="mt-4">
-                <Form.Label>Difficulty:</Form.Label>
-                <Form.Select
-                  defaultValue="Select difficulty"
-                  name="dificulty"
-                  value={formData.dificulty}
-                  onChange={handleInputChange}
-                >
-                  <option disabled>Select difficulty</option>
-                  <option>Easy</option>
-                  <option>Moderate</option>
-                  <option>Challenging</option>
-                </Form.Select>
-              </Form.Group>
-
-              <Form.Group className="mt-5" controlId="formBasicCheckbox">
-                <Form.Check
-                  type="checkbox"
-                  label="Best Deal"
-                  name="featured"
-                  checked={formData.featured}
-                  onChange={handleInputChange}
-                />
-              </Form.Group>
-
-              <Row className="my-5">
-                <Button variant="success" type="submit" className="col-2 mx-2">
-                  Submit
-                </Button>
-                <Button variant="secondary" className="col-2">
-                  <Link to="/backoffice"> Go Back</Link>
-                </Button>
-              </Row>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Container className="mt-5">
+      <h2 className="text-center">Edit Tour</h2>
+      <h6 className="text-center">Tour id: {tourId}</h6>
+      <Row>
+        <Col sm="10" className="m-auto">
+          <TourFormBackOffice
+            formActual={formActual}
+            formData={formData}
+            formSubmitted={formSubmitted}
+            handleInputChange={handleInputChange}
+            handleSubmit={handleSubmit}
+            variantButton="success"
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

@@ -30,19 +30,25 @@ const FeaturedToursList = () => {
         <Container className="mt-3">
           <Row className="gy-4">
             {data &&
-              data.map((tour) => (
-                <Col
-                  sm="9"
-                  md="6"
-                  lg="4"
-                  xl="4"
-                  xxl="3"
-                  className="mx-sm-auto mx-md-0"
-                  key={tour.id}
-                >
-                  <TourCard tour={tour} />
-                </Col>
-              ))}
+              data.map((tour) => {
+                if (tour.featured === true) {
+                  return (
+                    <Col
+                      sm="9"
+                      md="6"
+                      lg="4"
+                      xl="4"
+                      xxl="3"
+                      className="mx-sm-auto mx-md-0"
+                      key={tour.id}
+                    >
+                      <TourCard tour={tour} />
+                    </Col>
+                  );
+                } else {
+                  return null;
+                }
+              })}
           </Row>
         </Container>
       )}

@@ -92,7 +92,7 @@ function BackOffice() {
                     <td>{tour.createdAt.toLocaleString()}</td>
                     <td className="actions">
                       <Button variant="success">
-                        <Link to="/backoffice/editTour">
+                        <Link to={`/backoffice/editTour/${tour._id}`}>
                           <i className="bi bi-pencil-square"></i>
                         </Link>
                       </Button>

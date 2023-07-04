@@ -44,7 +44,11 @@
 }
 
 .menu-link a.li-selected {
-  color: #f8c93f;
+  /* color: gray; */
+  text-decoration: overline;
+  font-weight: 700;
+  /* box-shadow: 2px 2px 3px gray; */
+  /* padding: 0.3rem 0.5rem; */
 }
 
 .nav-buttons {
