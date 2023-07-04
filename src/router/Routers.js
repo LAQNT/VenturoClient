@@ -10,6 +10,7 @@ import SearchResult from "./../pages/SearchResult";
 import BackOffice from "../pages/BackOffice/BackOffice";
 import BackOfficeEditTour from "../pages/BackOffice/BackOfficeEditTour";
 import BackOfficeAddTour from "../pages/BackOffice/BackOfficeAddTour";
+import BookedTour from "../pages/BookedTour";
 
 export const Routers = () => {
   return (
@@ -28,6 +29,7 @@ export const Routers = () => {
         element={<BackOfficeEditTour />}
       />
       <Route path="/backoffice/addTour" element={<BackOfficeAddTour />} />
+      <Route path="//bookedTour" element={<BookedTour />} />
     </Routes>
   );
 };

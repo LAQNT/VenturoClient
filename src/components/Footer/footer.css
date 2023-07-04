@@ -89,7 +89,12 @@ footer p {
 }
 
 @media (max-width: 850px) {
-  .column-list {
+  .column-list,
+  .footer-top span:first-of-type {
     display: none;
+  }
+
+  .footer-icons {
+    margin: auto;
   }
 }

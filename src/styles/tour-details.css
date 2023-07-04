@@ -1,0 +1,29 @@
+.tour-details-img-container {
+  overflow: hidden;
+}
+
+.tour-details-img-container img {
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.tour-title-reviews {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tour-info {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.tour-info {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.tour-info > div {
+  display: flex;
+  flex-direction: column;
+}

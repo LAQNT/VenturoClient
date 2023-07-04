@@ -27,7 +27,7 @@ const FeaturedToursList = () => {
       {isLoading ? (
         <Spinner animation="border" role="status" variant="warning" />
       ) : (
-        <Container className="mt-3">
+        <Container className="mt-3 mb-5">
           <Row className="gy-4">
             {data &&
               data.map((tour) => {

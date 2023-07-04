@@ -37,11 +37,6 @@ const Tours = () => {
     <>
       <CommonSection />
       <section className="all-tours">
-        {/* <Container className="mb-5">
-          <Row>
-            <SearchBar />
-          </Row>
-        </Container> */}
         <>
           {isLoading ? (
             <Spinner animation="border" role="status" variant="warning" />
