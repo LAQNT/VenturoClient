@@ -1,0 +1,28 @@
+.all-tours {
+  margin-top: 8rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pagination span {
+  width: 2rem;
+  height: 2rem;
+  padding: 5px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: #fbfbfb;
+  border: 1px solid rgb(202, 202, 202);
+  color: rgb(84, 84, 84);
+}
+.active-page {
+  background-color: #ffca2c !important;
+  box-shadow: 2px 2px 2px rgb(203, 203, 203);
+}

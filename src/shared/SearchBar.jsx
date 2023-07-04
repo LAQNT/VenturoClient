@@ -12,8 +12,8 @@ const SearchBar = () => {
   const searchHandler = () => {
     const location = locationRef.current.value;
     const distance = distanceRef.current.value;
-    const group = groupRef.current.value;
-    const difficulty = difficultyRef.current.value;
+    // const group = groupRef.current.value;
+    // const difficulty = difficultyRef.current.value;
 
     if (location === "" || distance === "") {
       return alert("All fields are required");
@@ -44,7 +44,7 @@ const SearchBar = () => {
                 <span>
                   <i class="bi bi-broadcast"></i>
                 </span>
-                <h6>Distance</h6>
+                <h6>Max. Distance</h6>
               </div>
               <input
                 type="number"
@@ -76,7 +76,7 @@ const SearchBar = () => {
               id="search-button"
               onClick={searchHandler}
             >
-              <i class="bi bi-search"></i> Search
+              <i class="bi bi-search"></i> <span>Search</span>
             </Button>
           </Form>
         </div>

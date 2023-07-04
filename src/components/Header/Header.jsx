@@ -42,24 +42,6 @@ export const Header = () => {
     };
   }, []);
 
-  // const stickyHeaderFunc = () => {
-  //   window.addEventListener("scroll", () => {
-  //     if (
-  //       document.body.scrollTop > 1 ||
-  //       document.documentElement.scrollTop > 1
-  //     ) {
-  //       headerRef.current.classList.add("sticky-header");
-  //     } else {
-  //       headerRef.current.classList.remove("sticky-header");
-  //     }
-  //   });
-  //   window.addEventListener("scroll", stickyHeaderFunc);
-  // };
-
-  // useEffect(() => {
-  //   stickyHeaderFunc();
-  //   return window.removeEventListener("scroll", stickyHeaderFunc);
-  // });
 
   return (
     <header className="header" ref={headerRef}>

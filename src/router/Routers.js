@@ -23,7 +23,10 @@ export const Routers = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/tours/search" element={<SearchResult />} />
       <Route path="/backoffice" element={<BackOffice />} />
-      <Route path="/backoffice/editTour" element={<BackOfficeEditTour />} />
+      <Route
+        path="/backoffice/editTour/:tourId"
+        element={<BackOfficeEditTour />}
+      />
       <Route path="/backoffice/addTour" element={<BackOfficeAddTour />} />
     </Routes>
   );
