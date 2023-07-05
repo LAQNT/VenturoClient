@@ -42,7 +42,6 @@ export const Header = () => {
     };
   }, []);
 
-
   return (
     <header className="header" ref={headerRef}>
       <Container>
@@ -86,7 +85,7 @@ export const Header = () => {
                 </Button>
               </div>
               <span className="mobile-menu">
-                <i class="bi bi-list"></i>
+                <i className="bi bi-list"></i>
               </span>
             </div>
           </div>

@@ -6,9 +6,9 @@ const StarsReview = ({ avgRating }) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       if (i <= avgRating) {
-        stars.push(<i class="bi bi-star-fill" key={i} />);
+        stars.push(<i className="bi bi-star-fill" key={i} />);
       } else {
-        stars.push(<i class="bi bi-star" key={i} />);
+        stars.push(<i className="bi bi-star" key={i} />);
       }
     }
     return stars;

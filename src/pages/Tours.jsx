@@ -17,8 +17,8 @@ const Tours = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/tours`);
-      setData(response.data);
+      const response = await axios.get("http://localhost:3001/tours");
+      setData(response.data.data);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data", error);
@@ -43,7 +43,7 @@ const Tours = () => {
           ) : (
             <Container className="mt-3">
               <Row className="gy-4">
-                {data &&
+                {data.length > 0 &&
                   data.map((tour) => (
                     <Col
                       sm="9"

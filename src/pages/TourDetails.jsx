@@ -107,19 +107,19 @@ const TourDetails = () => {
                 <Form onSubmit={handleSubmit}>
                   <div className="raiting">
                     <span onClick={() => setTourRaiting(1)}>
-                      1 <i class="bi bi-star-fill" />
+                      1 <i className="bi bi-star-fill" />
                     </span>
                     <span onClick={() => setTourRaiting(2)}>
-                      2 <i class="bi bi-star-fill" />
+                      2 <i className="bi bi-star-fill" />
                     </span>
                     <span onClick={() => setTourRaiting(3)}>
-                      3 <i class="bi bi-star-fill" />
+                      3 <i className="bi bi-star-fill" />
                     </span>
                     <span onClick={() => setTourRaiting(4)}>
-                      4 <i class="bi bi-star-fill" />
+                      4 <i className="bi bi-star-fill" />
                     </span>
                     <span onClick={() => setTourRaiting(5)}>
-                      5 <i class="bi bi-star-fill" />
+                      5 <i className="bi bi-star-fill" />
                     </span>
                   </div>
                   <div className="review-input">

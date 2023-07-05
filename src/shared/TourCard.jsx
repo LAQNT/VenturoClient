@@ -26,11 +26,11 @@ const TourCard = ({ tour }) => {
             </span>
             <div className="tour-location">
               <span>
-                <i class="bi bi-geo-alt"></i>
+                <i className="bi bi-geo-alt"></i>
                 {city}
               </span>
               <span>
-                <i class="bi bi-globe-americas"></i>
+                <i className="bi bi-globe-americas"></i>
                 {address}
               </span>
             </div>
