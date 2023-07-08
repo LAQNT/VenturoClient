@@ -24,8 +24,6 @@ function TourFormBackOffice({
             isInvalid={formSubmitted && !formData.title}
           />
 
-          {/* TODO: HOW TO REPLACE DATA WHERE VALUE IS EMPTY WITH THE EXISTING ONE */}
-
           <Form.Control.Feedback type="invalid">
             A title is required
           </Form.Control.Feedback>

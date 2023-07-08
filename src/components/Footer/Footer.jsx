@@ -28,19 +28,14 @@ export const Footer = () => {
               href="https://www.linkedin.com/in/laura-quintero-agudelo-a576a111a/"
               target="_blank"
             >
-              <i class="bi bi-linkedin"></i>
+              <i className="bi bi-linkedin"></i>
             </a>
             <a href="https://github.com/LAQNT" target="_blank">
-              <i class="bi bi-github"></i>
+              <i className="bi bi-github"></i>
             </a>
-            <a href="" target="_blank">
-              <i class="bi bi-google"></i>
-            </a>
-            <a href="" target="_blank">
-              <i class="bi bi-facebook"></i>
-            </a>
-            <a href="" target="_blank">
-              <i class="bi bi-instagram"></i>
+
+            <a href="#" target="_blank">
+              <i className="bi bi-instagram"></i>
             </a>
           </div>
         </div>
@@ -53,57 +48,57 @@ export const Footer = () => {
           <Col className="column-list">
             <ul>
               <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
               </li>
               <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
               </li>
               <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
               </li>
               <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
               </li>
               <li>
-                <a href="">Countries</a>
-              </li>
-            </ul>
-          </Col>
-          <Col className="column-list">
-            <ul>
-              <li>
-                <a href="">Countries</a>
-              </li>
-              <li>
-                <a href="">Countries</a>
-              </li>
-              <li>
-                <a href="">Countries</a>
-              </li>
-              <li>
-                <a href="">Countries</a>
-              </li>
-              <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
               </li>
             </ul>
           </Col>
           <Col className="column-list">
             <ul>
               <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
               </li>
               <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
               </li>
               <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
               </li>
               <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
               </li>
               <li>
-                <a href="">Countries</a>
+                <a href="#">Countries</a>
+              </li>
+            </ul>
+          </Col>
+          <Col className="column-list">
+            <ul>
+              <li>
+                <a href="#">Countries</a>
+              </li>
+              <li>
+                <a href="#">Countries</a>
+              </li>
+              <li>
+                <a href="#">Countries</a>
+              </li>
+              <li>
+                <a href="#">Countries</a>
+              </li>
+              <li>
+                <a href="#">Countries</a>
               </li>
             </ul>
           </Col>
@@ -111,15 +106,15 @@ export const Footer = () => {
             <ul>
               <li>Contact us</li>
               <li>
-                <i class="bi bi-telephone"> </i>
+                <i className="bi bi-telephone"> </i>
                 <span> +39 3494958977</span>
               </li>
               <li>
-                <i class="bi bi-envelope"> </i>
+                <i className="bi bi-envelope"> </i>
                 <span> laura.quintero.a@hotmail.com</span>
               </li>
               <li>
-                <i class="bi bi-geo"> </i>
+                <i className="bi bi-geo"> </i>
                 <span> Milano, Italy</span>
               </li>
             </ul>

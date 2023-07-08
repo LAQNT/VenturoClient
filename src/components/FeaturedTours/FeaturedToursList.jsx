@@ -14,8 +14,10 @@ const FeaturedToursList = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/tours`);
-      setData(response.data);
+      const response = await axios.get(
+        "http://localhost:3001/api/v1/tours/search/featuredTours"
+      );
+      setData(response.data.data);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data", error);
@@ -27,27 +29,24 @@ const FeaturedToursList = () => {
       {isLoading ? (
         <Spinner animation="border" role="status" variant="warning" />
       ) : (
-        <Container className="mt-3">
+        <Container className="mt-3 mb-5">
           <Row className="gy-4">
             {data &&
+              data?.length > 0 &&
               data.map((tour) => {
-                if (tour.featured === true) {
-                  return (
-                    <Col
-                      sm="9"
-                      md="6"
-                      lg="4"
-                      xl="4"
-                      xxl="3"
-                      className="mx-sm-auto mx-md-0"
-                      key={tour.id}
-                    >
-                      <TourCard tour={tour} />
-                    </Col>
-                  );
-                } else {
-                  return null;
-                }
+                return (
+                  <Col
+                    sm="9"
+                    md="6"
+                    lg="4"
+                    xl="4"
+                    xxl="3"
+                    className="mx-sm-auto mx-md-0"
+                    key={tour.id}
+                  >
+                    <TourCard tour={tour} />
+                  </Col>
+                );
               })}
           </Row>
         </Container>
