@@ -14,7 +14,9 @@ const FeaturedToursList = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/featuredTours");
+      const response = await axios.get(
+        "http://localhost:3001/api/v1/tours/search/featuredTours"
+      );
       setData(response.data.data);
       setIsLoading(false);
     } catch (error) {

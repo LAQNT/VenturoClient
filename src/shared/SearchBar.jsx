@@ -28,7 +28,7 @@ const SearchBar = () => {
             <FormGroup className="form-group">
               <div className="input-label">
                 <span>
-                  <i class="bi bi-geo-alt"></i>
+                  <i className="bi bi-geo-alt"></i>
                 </span>
 
                 <h6>Location</h6>
@@ -42,7 +42,7 @@ const SearchBar = () => {
             <FormGroup className="form-group">
               <div className="input-label">
                 <span>
-                  <i class="bi bi-broadcast"></i>
+                  <i className="bi bi-broadcast"></i>
                 </span>
                 <h6>Max. Distance</h6>
               </div>
@@ -55,7 +55,7 @@ const SearchBar = () => {
             <FormGroup className="form-group">
               <div className="input-label">
                 <span>
-                  <i class="bi bi-person-add"></i>
+                  <i className="bi bi-person-add"></i>
                 </span>
                 <h6>Traveler/s</h6>
               </div>
@@ -64,7 +64,7 @@ const SearchBar = () => {
             <FormGroup className="form-group">
               <div className="input-label">
                 <span>
-                  <i class="bi bi-bar-chart"></i>
+                  <i className="bi bi-bar-chart"></i>
                 </span>
 
                 <h6>Difficulty</h6>
@@ -76,7 +76,7 @@ const SearchBar = () => {
               id="search-button"
               onClick={searchHandler}
             >
-              <i class="bi bi-search"></i> <span>Search</span>
+              <i className="bi bi-search"></i> <span>Search</span>
             </Button>
           </Form>
         </div>

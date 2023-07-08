@@ -33,12 +33,7 @@ export const Footer = () => {
             <a href="https://github.com/LAQNT" target="_blank">
               <i className="bi bi-github"></i>
             </a>
-            <a href="#" target="_blank">
-              <i className="bi bi-google"></i>
-            </a>
-            <a href="#" target="_blank">
-              <i className="bi bi-facebook"></i>
-            </a>
+
             <a href="#" target="_blank">
               <i className="bi bi-instagram"></i>
             </a>
