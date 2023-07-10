@@ -8,6 +8,7 @@ import Subtitle from "./../shared/Subtitle";
 import SearchBar from "../shared/SearchBar";
 import ServiceList from "../services/ServiceList";
 import FeaturedToursList from "../components/FeaturedTours/FeaturedToursList";
+import imageOffers from "../assets/imgs/5727212.png";
 
 const Home = () => {
   return (
@@ -30,13 +31,23 @@ const Home = () => {
         </Container>
         <SearchBar className="search-bar" />
       </section>
-      <section className="services-section">
+      <section className="offers">
         <Container>
           <Row>
-            <Col lg="3">
-              <h3 className="category-title">Our additional services</h3>
+            <Col>
+              <div className="offers-card">
+                <div className="offers-card-subtitle">
+                  <h4>Find unique destinations</h4>
+                  <p>
+                    From natural and challenging hikings to walking tours around
+                    the most special cities in the world, find your next
+                    adventure.
+                  </p>
+                </div>
+                <img src={imageOffers} alt="" />
+              </div>
             </Col>
-            <ServiceList />
+            {/* <Col>COL2</Col> */}
           </Row>
         </Container>
       </section>
@@ -48,6 +59,16 @@ const Home = () => {
               <h2 className="category-title">Best Deals</h2>
             </Col>
             <FeaturedToursList />
+          </Row>
+        </Container>
+      </section>
+      <section className="services-section">
+        <Container>
+          <Row>
+            <Col lg="3">
+              <h3 className="category-title">Our additional services</h3>
+            </Col>
+            <ServiceList />
           </Row>
         </Container>
       </section>

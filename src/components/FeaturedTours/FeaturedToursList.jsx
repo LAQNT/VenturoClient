@@ -3,54 +3,44 @@ import TourCard from "../../shared/TourCard";
 import axios from "axios";
 import { Col, Row, Container } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
+import useFetch from "../../hooks/useFetch";
+import { BASE_URL } from "./../../utils/config";
 
 const FeaturedToursList = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const {
+    data: featuredTours,
+    loading,
+    error,
+  } = useFetch(`${BASE_URL}/tours/search/featuredTours`);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:3001/api/v1/tours/search/featuredTours"
-      );
-      setData(response.data.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.error("Error fetching data", error);
-    }
-  };
+  console.log(featuredTours);
 
   return (
     <>
-      {isLoading ? (
-        <Spinner animation="border" role="status" variant="warning" />
-      ) : (
-        <Container className="mt-3 mb-5">
-          <Row className="gy-4">
-            {data &&
-              data?.length > 0 &&
-              data.map((tour) => {
-                return (
-                  <Col
-                    sm="9"
-                    md="6"
-                    lg="4"
-                    xl="4"
-                    xxl="3"
-                    className="mx-sm-auto mx-md-0"
-                    key={tour.id}
-                  >
-                    <TourCard tour={tour} />
-                  </Col>
-                );
-              })}
-          </Row>
-        </Container>
-      )}
+      {loading && <Spinner />}
+      {error && <h5>error</h5>}
+      <Container className="mt-3 mb-5">
+        <Row className="gy-4">
+          {!loading &&
+            !error &&
+            featuredTours?.map((tour) => {
+              return (
+                <Col
+                  xs="8"
+                  sm="8"
+                  md="6"
+                  lg="4"
+                  xl="4"
+                  xxl="3"
+                  className="mx-sm-auto mx-xs-auto mx-md-0"
+                  key={tour._id}
+                >
+                  <TourCard tour={tour} />
+                </Col>
+              );
+            })}
+        </Row>
+      </Container>
     </>
   );
 };

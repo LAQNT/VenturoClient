@@ -1,8 +1,8 @@
 import "./header.css";
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Container, Row, Button } from "react-bootstrap";
-import { NavLink, Link } from "react-router-dom";
-
+import { NavLink, Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import logo from "../../assets/imgs/venturo-logo.png";
 
 const navLinks = [
@@ -22,6 +22,13 @@ const navLinks = [
 
 export const Header = () => {
   const headerRef = useRef(null);
+  const navigate = useNavigate();
+  const { user, dispatch } = useContext(AuthContext);
+
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+  };
 
   useEffect(() => {
     const stickyHeaderFunc = () => {
@@ -44,12 +51,14 @@ export const Header = () => {
 
   return (
     <header className="header" ref={headerRef}>
-      <Container>
+      <Container className="px-4">
         <Row>
           <div className="navbar">
             {/* Logo */}
             <div className="logo-container">
-              <img src={logo} alt="" />
+              <NavLink to="/home">
+                <img src={logo} alt="" />
+              </NavLink>
             </div>
             {/* ---- */}
             {/* menu */}
@@ -77,13 +86,23 @@ export const Header = () => {
             {/* ---- */}
             <div className="nav-buttons">
               <div className="nav-user">
-                <Button variant="warning">
-                  <Link to="/login">Login</Link>
-                </Button>
-                <Button variant="secondary">
-                  <Link to="/register">Register</Link>
-                </Button>
+                {user ? (
+                  <>
+                    <h6>{user.username}</h6>
+                    <Button onClick={logout}>Logout</Button>
+                  </>
+                ) : (
+                  <>
+                    <Button variant="dark">
+                      <Link to="/login">Login</Link>
+                    </Button>
+                    <Button variant="secondary">
+                      <Link to="/register">Register</Link>
+                    </Button>
+                  </>
+                )}
               </div>
+
               <span className="mobile-menu">
                 <i className="bi bi-list"></i>
               </span>

@@ -1,23 +1,38 @@
 import React, { useRef } from "react";
-
 import { Container, Col, Form, FormGroup, Button } from "react-bootstrap";
 import "./search-bar.css";
+import { BASE_URL } from "./../utils/config";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-  const locationRef = useRef();
-  const distanceRef = useRef();
-  const groupRef = useRef();
-  const difficultyRef = useRef();
+  const countryRef = useRef("");
+  const distanceRef = useRef(0);
+  const groupRef = useRef(0);
+  // const difficultyRef = useRef();
+  const navigate = useNavigate();
 
-  const searchHandler = () => {
-    const location = locationRef.current.value;
+  const searchHandler = async () => {
+    const country = countryRef.current.value;
     const distance = distanceRef.current.value;
-    // const group = groupRef.current.value;
+    const group = groupRef.current.value;
     // const difficulty = difficultyRef.current.value;
 
-    if (location === "" || distance === "") {
+    if (country === "" || distance === "" || group === "") {
       return alert("All fields are required");
     }
+
+    const res = await fetch(
+      `${BASE_URL}/tours/search/searchTour?country=${country}&distance=${distance}&numberOfPeople=${group}`
+    );
+
+    if (!res.ok) alert("something went wrong");
+
+    const result = await res.json();
+
+    navigate(
+      `/tours/search?country=${country}&distance=${distance}&numberOfPeople=${group}`,
+      { state: result.data }
+    );
   };
 
   return (
@@ -31,12 +46,12 @@ const SearchBar = () => {
                   <i className="bi bi-geo-alt"></i>
                 </span>
 
-                <h6>Location</h6>
+                <h6>Country</h6>
               </div>
               <input
                 type="text"
                 placeholder="Where are you going?"
-                ref={locationRef}
+                ref={countryRef}
               />
             </FormGroup>
             <FormGroup className="form-group">
@@ -61,7 +76,7 @@ const SearchBar = () => {
               </div>
               <input type="numer" placeholder="0" ref={groupRef} />
             </FormGroup>
-            <FormGroup className="form-group">
+            {/* <FormGroup className="form-group">
               <div className="input-label">
                 <span>
                   <i className="bi bi-bar-chart"></i>
@@ -70,12 +85,8 @@ const SearchBar = () => {
                 <h6>Difficulty</h6>
               </div>
               <input type="text" placeholder="" ref={difficultyRef} />
-            </FormGroup>
-            <Button
-              variant="warning"
-              id="search-button"
-              onClick={searchHandler}
-            >
+            </FormGroup> */}
+            <Button variant="dark" id="search-button" onClick={searchHandler}>
               <i className="bi bi-search"></i> <span>Search</span>
             </Button>
           </Form>

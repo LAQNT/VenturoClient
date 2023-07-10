@@ -7,7 +7,7 @@ import avgRating from "../utils/avgRating";
 // import calculateAvgRating from "../utils/avgRating";
 
 const TourCard = ({ tour }) => {
-  const { _id, title, city, address, photo, price, reviews, featured } = tour;
+  const { _id, title, city, country, photo, price, reviews, featured } = tour;
 
   // const { totalRating, avgRating } = calculateAvgRating(reviews);
   return (
@@ -31,7 +31,7 @@ const TourCard = ({ tour }) => {
               </span>
               <span>
                 <i className="bi bi-globe-americas"></i>
-                {address}
+                {country}
               </span>
             </div>
           </div>

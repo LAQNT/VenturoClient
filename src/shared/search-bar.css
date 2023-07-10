@@ -6,13 +6,15 @@
 }
 
 .search-form {
+  border: 1px solid rgb(199, 215, 210);
+
   display: flex;
   justify-content: space-around;
   margin-top: -1rem;
   width: 100%;
   border-radius: 0.5rem;
   padding: 0.85rem 1.5rem 1.2rem 1.5rem;
-  box-shadow: 5px 2px 15px rgb(189, 189, 189);
+  box-shadow: 4px 4px 3px rgba(55, 55, 55, 0.415);
   z-index: 3;
   background-color: white;
 }
