@@ -65,9 +65,6 @@ const Home = () => {
       <section className="services-section">
         <Container>
           <Row>
-            <Col lg="3">
-              <h3 className="category-title">Our additional services</h3>
-            </Col>
             <ServiceList />
           </Row>
         </Container>

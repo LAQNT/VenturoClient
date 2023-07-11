@@ -1,5 +1,4 @@
-import { React, useState, useEffect, useRef, useContext } from "react";
-import axios from "axios";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "../styles/tour-details.css";
 import { Container, Row, Col, Form, ListGroup, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -9,10 +8,11 @@ import Booking from "../components/Booking/Booking";
 import useFetch from "../hooks/useFetch";
 import { BASE_URL } from "../utils/config";
 import { AuthContext } from "../context/AuthContext";
+import userImg from "../assets/imgs/default_user.jpg";
 
 const TourDetails = () => {
   const { id } = useParams();
-  const [tourRaiting, setTourRaiting] = useState(null);
+  const [tourRating, setTourRating] = useState(null);
   const reviewMsgRef = useRef("");
   const { user } = useContext(AuthContext);
 
@@ -28,7 +28,6 @@ const TourDetails = () => {
     price,
     numberOfPeople,
     dificulty,
-    featured,
     reviews,
   } = tour;
 
@@ -46,10 +45,12 @@ const TourDetails = () => {
       }
 
       const reviewObj = {
+        tourId: id,
         username: user?.username,
-        reviewText,
-        rating: tourRaiting,
+        reviewText: reviewText,
+        rating: tourRating,
       };
+      console.log(reviewObj);
 
       const res = await fetch(`${BASE_URL}/review/${id}`, {
         method: "post",
@@ -62,13 +63,13 @@ const TourDetails = () => {
 
       const result = await res.json();
       if (!res.ok) alert(result.message);
-      // alert("review submited");
     } catch (error) {
       alert(error.message);
     }
   };
 
   const { totalRating, avgRating } = calculateAvgRating(reviews);
+  console.log(totalRating);
   const options = { day: "numeric", month: "long", year: "numeric" };
 
   return (
@@ -76,96 +77,137 @@ const TourDetails = () => {
       <section>
         <Container className="mt-5">
           {!loading && !error && (
-            <Row>
+            <Row className="row-container-details">
               <Col lg="8" className=" m-auto">
                 <div className="tour-details-img-container">
                   <img src={photo} alt="" />
                 </div>
                 <div className="tour-title-reviews">
                   <h2>{title}</h2>
-                  <div>
-                    <StarsReview props={avgRating} />
-                    {avgRating === 0 ? null : avgRating}
-                    {totalRating === 0 ? (
-                      "Not rated"
-                    ) : (
-                      <span>({reviews?.length} reviews)</span>
-                    )}
+                  <div className="detail-tour-reviews">
+                    <StarsReview avgRating={avgRating} />
+                    <div className="detail-tour-reviews-numbers">
+                      <span>
+                        {avgRating === 0
+                          ? null
+                          : parseFloat(avgRating).toFixed(1)}
+                      </span>
+                      <span>
+                        {totalRating === 0 ? (
+                          "Not rated"
+                        ) : (
+                          <span>({reviews?.length} reviews)</span>
+                        )}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="tour-info">
-                  <div>
-                    <span> {city}</span>
-                    <span> {country}</span>
-                    <span>max. {numberOfPeople}</span>
-                    <span>€ {price}</span>
+                  <div className="icons-info col-3">
+                    <span>
+                      <i className="bi bi-geo-alt"></i> {city}
+                    </span>
+                    <span>
+                      <i className="bi bi-globe-americas"></i> {country}
+                    </span>
+                    <span>
+                      <i className="bi bi-people"></i>Max. {numberOfPeople}
+                    </span>
+                    <span>
+                      <i className="bi bi-broadcast"></i>
+                      {distance} km
+                    </span>
+                    <span>
+                      <i className="bi bi-bar-chart"></i>
+                      {dificulty}
+                    </span>
+                    <span className="span-price">€ {price} / person</span>
                   </div>
                   <p>{desc}</p>
                 </div>
                 <div className="tour-reviews">
-                  <h4>
-                    Reviews <span>({reviews?.length} reviews)</span>
-                  </h4>
-                  <Form onSubmit={handleSubmit}>
-                    <div className="raiting">
-                      <span onClick={() => setTourRaiting(1)}>
-                        1 <i className="bi bi-star-fill" />
-                      </span>
-                      <span onClick={() => setTourRaiting(2)}>
-                        2 <i className="bi bi-star-fill" />
-                      </span>
-                      <span onClick={() => setTourRaiting(3)}>
-                        3 <i className="bi bi-star-fill" />
-                      </span>
-                      <span onClick={() => setTourRaiting(4)}>
-                        4 <i className="bi bi-star-fill" />
-                      </span>
-                      <span onClick={() => setTourRaiting(5)}>
-                        5 <i className="bi bi-star-fill" />
-                      </span>
-                    </div>
-                    <div className="review-input">
-                      <input type="text" placeholder="share your experience" />
-                      <Button
-                        variant="success"
-                        type="submit"
-                        ref={reviewMsgRef}
-                        className="col-2 mx-2 success p-0"
-                        onClick={handleSubmit}
-                      >
-                        Submit
-                      </Button>
-                    </div>
-                  </Form>
+                  <Row>
+                    <div className="post-review">
+                      <Form onSubmit={handleSubmit}>
+                        <div className="review-input">
+                          <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Share your experience:</Form.Label>
 
-                  <ListGroup className="user-reviews">
-                    {reviews?.map((review) => (
-                      <div className="review-item">
-                        <img
-                          src="C:\Users\laura\Desktop\Epicode\M7\Capstone Project\Venturo\client\src\assets\imgs\user-icon.jpg"
-                          alt=""
-                        />
-                        <div>
-                          <div>
-                            <div>
-                              <h5>{review.username}</h5>
-                              <p>
-                                {new Date("01-01-2023").toLocaleDateString(
-                                  "en-US",
-                                  options
-                                )}
-                              </p>
+                            <div className="rating">
+                              <div className="star-post-review">
+                                <span onClick={() => setTourRating(1)}>1</span>
+                                <i className="bi bi-star-fill" />
+                              </div>
+
+                              <div className="star-post-review">
+                                <span onClick={() => setTourRating(2)}>2</span>
+                                <i className="bi bi-star-fill" />
+                              </div>
+
+                              <div className="star-post-review">
+                                <span onClick={() => setTourRating(3)}>3</span>
+                                <i className="bi bi-star-fill" />
+                              </div>
+
+                              <div className="star-post-review">
+                                <span onClick={() => setTourRating(4)}>4</span>
+                                <i className="bi bi-star-fill" />
+                              </div>
+
+                              <div className="star-post-review">
+                                <span onClick={() => setTourRating(5)}>5</span>
+                                <i className="bi bi-star-fill" />
+                              </div>
                             </div>
-                            <span></span>
-                          </div>
-                          <h6>{review.reviewtext}</h6>
+                            <Form.Control
+                              type="text"
+                              as="textarea"
+                              ref={reviewMsgRef}
+                              placeholder="your review here"
+                            />
+                          </Form.Group>
+
+                          <Button
+                            variant="dark"
+                            type="submit"
+                            className="success py-0"
+                            onClick={handleSubmit}
+                          >
+                            submit review
+                          </Button>
                         </div>
+                      </Form>
+                    </div>
+                  </Row>
+
+                  <ListGroup className="user-reviews col-6">
+                    <h4>
+                      Reviews <span>({reviews?.length} reviews)</span>
+                    </h4>
+                    {reviews?.map((review) => (
+                      <div className="review-item" key={review._id}>
+                        <div className="user-reviews-top">
+                          <img src={userImg} alt="" />
+                          <span>{review.username}</span>
+                          <StarsReview totalRating={review.tourRating} />
+                        </div>
+
+                        <div className="user-reviews-rating-data">
+                          <span>
+                            {new Date(review.createdAt).toLocaleDateString(
+                              "en-US",
+                              options
+                            )}
+                          </span>
+                        </div>
+
+                        <p>{review.reviewText}</p>
                       </div>
                     ))}
                   </ListGroup>
                 </div>
               </Col>
-              <Col lg="4" className="mt-md-5">
+              <Col lg="4">
                 <Booking tour={tour} avgRating={avgRating} />
               </Col>
             </Row>

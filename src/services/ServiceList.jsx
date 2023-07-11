@@ -13,14 +13,10 @@ const servicesData = [
     title: "Weather",
     desc: "Calculate the weather for your trip.",
   },
-  {
-    imgUrl: guideImg,
-    title: "Guides",
-    desc: "Travel with the best local guides.",
-  },
+
   {
     imgUrl: customImg,
-    title: "Customization",
+    title: "Aditional Services",
     desc: "Customize your trip for your needs.",
   },
 ];

@@ -9,7 +9,6 @@ const CommonSection = () => {
     <section className="common-section mb-5">
       <Container fluid>
         <Row>
-          <h2>All Tours</h2>
           <div className="common-img-container p-0">
             <img src={commonSectionImage} alt="" />
           </div>

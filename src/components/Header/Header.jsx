@@ -14,10 +14,6 @@ const navLinks = [
     path: "/tours",
     display: "Tours",
   },
-  {
-    path: "/contact",
-    display: "Contact Us",
-  },
 ];
 
 export const Header = () => {
@@ -88,8 +84,10 @@ export const Header = () => {
               <div className="nav-user">
                 {user ? (
                   <>
-                    <h6>{user.username}</h6>
-                    <Button onClick={logout}>Logout</Button>
+                    <span className="user-name">{user.username}</span>
+                    <Button variant="secondary" onClick={logout}>
+                      Logout
+                    </Button>
                   </>
                 ) : (
                   <>

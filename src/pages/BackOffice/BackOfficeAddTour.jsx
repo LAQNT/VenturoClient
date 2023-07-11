@@ -10,14 +10,14 @@ function BackOfficeAddTour() {
   const [formData, setFormData] = useState({
     title: "",
     city: "",
-    address: "",
+    country: "",
     distance: "",
     photo: "",
     desc: "",
     price: "",
     numberOfPeople: "",
     dificulty: "",
-    featured: false,
+    bestDeal: false,
   });
 
   const handleInputChange = (e) => {
@@ -35,7 +35,7 @@ function BackOfficeAddTour() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/tours",
+        "http://localhost:3001/api/v1/tours",
         formData
       );
       console.log("Tour created:", response.data);

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import StarsReview from "../components/StarsReview/StarsReview";
 import "./tour-card.css";
 import avgRating from "../utils/avgRating";
-// import calculateAvgRating from "../utils/avgRating";
 
 const TourCard = ({ tour }) => {
   const { _id, title, city, country, photo, price, reviews, featured } = tour;
@@ -37,7 +36,7 @@ const TourCard = ({ tour }) => {
           </div>
           <div className="tour-rating">
             <div className="stars">
-              <StarsReview avgRating={avgRating} />
+              <StarsReview totalRating={reviews.rating} />
             </div>
             <span>({reviews.length} reviews)</span>
           </div>

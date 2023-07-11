@@ -63,11 +63,11 @@ function TourFormBackOffice({
           <Form.Label>Country:</Form.Label>
           <Form.Control
             type="text"
-            name="address"
-            placeholder={formActual.address}
-            value={formData.address}
+            name="country"
+            placeholder={formActual.country}
+            value={formData.country}
             onChange={handleInputChange}
-            isInvalid={formSubmitted && !formData.address}
+            isInvalid={formSubmitted && !formData.country}
           />
           <Form.Control.Feedback type="invalid">
             A country is required
@@ -161,8 +161,8 @@ function TourFormBackOffice({
           <Form.Check
             type="checkbox"
             label="Best Deal"
-            name="featured"
-            checked={formData.featured}
+            name="bestDeal"
+            checked={formData.bestDeal}
             onChange={handleInputChange}
           />
         </Form.Group>

@@ -29,7 +29,7 @@ export const Routers = () => {
         element={<BackOfficeEditTour />}
       />
       <Route path="/backoffice/addTour" element={<BackOfficeAddTour />} />
-      <Route path="//bookedTour" element={<BookedTour />} />
+      <Route path="/bookedTour" element={<BookedTour />} />
     </Routes>
   );
 };

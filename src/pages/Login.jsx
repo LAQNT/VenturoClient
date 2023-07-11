@@ -46,11 +46,10 @@ const Login = () => {
   return (
     <section>
       <Container>
-        <h2>Log-In</h2>
-
         <Row>
           <Col lg="8" className="m-auto">
             <div className="login-container">
+              <h2>Log-In</h2>
               <div className="login-icon">
                 <i className="bi bi-person-square"></i>
               </div>
@@ -58,7 +57,7 @@ const Login = () => {
                 <div className="user"></div>
               </div>
 
-              <Form onSubmit={handleClick}>
+              <Form onSubmit={handleClick} className="login-form">
                 <FormGroup>
                   <input
                     type="email"

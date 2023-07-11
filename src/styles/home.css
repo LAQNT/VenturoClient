@@ -5,7 +5,7 @@
 }
 
 .services-section {
-  margin-top: 6rem;
+  margin-top: 2rem;
 }
 
 .category-title {
@@ -52,9 +52,9 @@
 .subtitle-container {
   background-image: linear-gradient(
     to right,
-    white,
-    rgba(255, 255, 255, 0.942),
-    rgba(255, 255, 255, 0.601),
+
+    rgba(255, 255, 255, 0.7),
+    /* rgba(255, 255, 255, 0.942), */ rgba(255, 255, 255, 0.601),
     transparent
   );
 

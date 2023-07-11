@@ -2,15 +2,16 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 20rem;
+  height: 15rem;
   background-color: #fbfbfb;
   color: gray;
   border-top: 1px solid rgb(218, 218, 218);
+  margin-top: 7rem;
 }
 
-.footer-top > span {
-  font-size: 1.1rem;
-}
+/* .footer-top > span {
+  font-size: 1rem;
+} */
 
 footer a,
 footer span {
@@ -30,7 +31,7 @@ footer li {
 }
 
 footer li i {
-  margin-right: 0.3rem;
+  margin-left: 0.3rem;
   font-size: 1rem;
 }
 
@@ -40,7 +41,7 @@ footer li:first-of-type {
 }
 
 footer ul {
-  text-align: center;
+  text-align: right;
 }
 
 footer img {
@@ -56,13 +57,16 @@ footer p {
 .footer-top {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgb(218, 218, 218);
+  padding-bottom: 1rem;
+  /* border-bottom: 1px solid rgb(218, 218, 218); */
 }
 
 .footer-icons {
   display: flex;
   gap: 1rem;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
 }
 
 .footer-icons i {
@@ -76,16 +80,15 @@ footer p {
 }
 
 .footer-middle .col:last-of-type ul {
-  /* display: flex; */
-  text-align: left;
+  text-align: rightt;
 }
 
 .footer-bottom {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-align: center;
   background-color: #fbfbfb;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 @media (max-width: 850px) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./booking.css";
 import {
   Form,
@@ -9,13 +9,19 @@ import {
 } from "react-bootstrap";
 import StarsReview from "../StarsReview/StarsReview";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { BASE_URL } from "../../utils/config";
 
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews } = tour;
+  const { price, reviews, title } = tour;
   const navigate = useNavigate();
-  const [credentials, setCredentials] = useState({
-    userId: "01",
-    userEmail: "example@gexample.com",
+
+  const { user } = useContext(AuthContext);
+
+  const [booking, setBooking] = useState({
+    userId: user && user._id,
+    userEmail: user && user.email,
+    tourName: title,
     fullName: "",
     phone: "",
     guestsNumber: 1,
@@ -23,94 +29,124 @@ const Booking = ({ tour, avgRating }) => {
   });
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    console.log(credentials);
+
+    try {
+      if (!user || user === undefined || user === null) {
+        return alert("Please sign in");
+      }
+
+      const res = await fetch(`${BASE_URL}/booking`, {
+        method: "post",
+        headers: {
+          "content-type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(booking),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        return alert(result.message);
+      }
+      navigate("/bookedTour");
+    } catch (error) {
+      alert(error.message);
+    }
+
+    console.log(booking);
     navigate("/bookedTour");
   };
 
   const serviceFee = 10;
   const totalAmount =
-    Number(price) * Number(credentials.guestsNumber) + Number(serviceFee);
+    Number(price) * Number(booking.guestsNumber) + Number(serviceFee);
 
   return (
     <div className="booking">
       <div className="booking-top">
         <h3>
-          {price} <span>/ person</span>
+          € {price} <span>/ person</span>
         </h3>
-        <div>
-          <StarsReview props={avgRating} />
-          {avgRating === 0 ? null : avgRating}({reviews?.length})
+        <div className="reviews-stars">
+          <StarsReview avgRating={avgRating} />{" "}
+          <div className="review-numbers">
+            <span>
+              {avgRating === 0 ? null : parseFloat(avgRating.toFixed(1))}
+            </span>
+            <span>({reviews?.length})</span>
+          </div>
         </div>
+      </div>
 
-        <div className="booking-form">
-          <h5>Information</h5>
-          <Form className="booking-info-form" onSubmit={handleClick}>
-            <FormGroup>
-              <input
-                type="text"
-                placeholder="Full Name"
-                required
-                id="fullName"
-                onChange={handleChange}
-              />
-            </FormGroup>
+      <div className="booking-form">
+        <h5>Booking Information</h5>
+        <Form className="booking-info-form" onSubmit={handleClick}>
+          <FormGroup>
+            <input
+              type="text"
+              placeholder="Full Name"
+              required
+              id="fullName"
+              onChange={handleChange}
+            />
+          </FormGroup>
 
-            <FormGroup>
-              <input
-                type="number"
-                placeholder="Phone"
-                required
-                id="fullName"
-                onChange={handleChange}
-              />
-            </FormGroup>
+          <FormGroup>
+            <input
+              type="number"
+              placeholder="Phone"
+              required
+              id="phone"
+              onChange={handleChange}
+            />
+          </FormGroup>
 
-            <FormGroup>
-              <input
-                type="date"
-                placeholder=""
-                id="bookAt"
-                onChange={handleChange}
-              />
-              <input
-                type="number"
-                placeholder="Guests"
-                id="guestsNumber"
-                required
-                onChange={handleChange}
-              />
-            </FormGroup>
-          </Form>
-        </div>
+          <FormGroup>
+            <input
+              type="date"
+              placeholder=""
+              id="bookAt"
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <input
+              type="number"
+              placeholder="Guests"
+              id="guestSize"
+              required
+              onChange={handleChange}
+            />
+          </FormGroup>
+        </Form>
+      </div>
 
-        <div className="booking-bottom">
-          <ListGroup>
-            <ListGroupItem>
-              <h5>
-                $ {price} <i class="bi bi-x-circle"></i>
-              </h5>
-              <span> € {price}</span>
-            </ListGroupItem>
+      <div className="booking-bottom">
+        <ListGroup>
+          <ListGroupItem>
+            <span>Price per Person: </span>
+            <span>€ {price} </span>
+          </ListGroupItem>
 
-            <ListGroupItem>
-              <h5>Service Charge</h5>
-              <span> € {serviceFee}</span>
-            </ListGroupItem>
+          <ListGroupItem>
+            <span>Service Charge:</span>
+            <span> € {serviceFee}</span>
+          </ListGroupItem>
 
-            <ListGroupItem>
-              <h5>Total</h5>
-              <span> € {totalAmount}</span>
-            </ListGroupItem>
-          </ListGroup>
-          <Button variant="warning" onClick={handleClick}>
-            Book Now
-          </Button>
-        </div>
+          <ListGroupItem>
+            <span>Total: </span>
+            <span> € {totalAmount}</span>
+          </ListGroupItem>
+        </ListGroup>
+        <Button variant="success" onClick={handleClick} className="mt-4">
+          Book Now
+        </Button>
       </div>
     </div>
   );

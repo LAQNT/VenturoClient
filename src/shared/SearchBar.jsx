@@ -76,16 +76,7 @@ const SearchBar = () => {
               </div>
               <input type="numer" placeholder="0" ref={groupRef} />
             </FormGroup>
-            {/* <FormGroup className="form-group">
-              <div className="input-label">
-                <span>
-                  <i className="bi bi-bar-chart"></i>
-                </span>
 
-                <h6>Difficulty</h6>
-              </div>
-              <input type="text" placeholder="" ref={difficultyRef} />
-            </FormGroup> */}
             <Button variant="dark" id="search-button" onClick={searchHandler}>
               <i className="bi bi-search"></i> <span>Search</span>
             </Button>

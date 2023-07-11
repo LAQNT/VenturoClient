@@ -1,8 +1,38 @@
+.booking {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  gap: 2rem;
+}
+
 .booking-top {
   display: flex;
   justify-content: space-between;
-  border: 1px solid rgb(207, 207, 207);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  /* align-self: first baseline; */
+}
+
+.booking-top h3 {
+  font-weight: 600;
+}
+
+.reviews-stars {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews-stars span {
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.review-numbers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking-info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

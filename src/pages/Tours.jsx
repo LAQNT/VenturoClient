@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from "react";
-import axios from "axios";
 import { Spinner, Container, Row, Col } from "react-bootstrap";
 import CommonSection from "../shared/CommonSection";
 import SearchBar from "../shared/SearchBar";
@@ -29,9 +28,10 @@ const Tours = () => {
 
   return (
     <>
-      <CommonSection title={"All Tours"} />
+      <CommonSection title={""} />
+      <h2 className="text-center">All Tours</h2>
       <section className="all-tours">
-        <Container className="mt-3">
+        <Container className="">
           {!loading && !error && (
             <Row className="gy-4">
               {tours?.map((tour) => (
@@ -49,7 +49,7 @@ const Tours = () => {
               ))}
 
               <Col lg="12">
-                <div className="pagination text-center">
+                <div className="pagination text-center mt-5">
                   {[...Array(pageCount).keys()].map((number) => (
                     <span
                       key={number}

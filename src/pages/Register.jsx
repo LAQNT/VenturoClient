@@ -1,5 +1,5 @@
 import { React, useState, useContext } from "react";
-import "../styles/login.css";
+import "../styles/register.css";
 import { Container, Row, Col, Form, FormGroup, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -41,18 +41,18 @@ const Register = () => {
   return (
     <section>
       <Container>
-        <h2>Register</h2>
         <Row>
           <Col lg="8" className="m-auto">
-            <div className="login-container">
-              <div className="login-icon">
+            <div className="register-container">
+              <h2>Register</h2>
+              <div className="register-icon">
                 <i className="bi bi-person-square"></i>
               </div>
-              <div className="login-form">
+              <div className="register-form">
                 <div className="user"></div>
               </div>
 
-              <Form onSubmit={handleClick}>
+              <Form onSubmit={handleClick} className="register-form">
                 <FormGroup>
                   <input
                     type="text"
