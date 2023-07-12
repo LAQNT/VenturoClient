@@ -23,7 +23,11 @@ export const Header = () => {
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    navigate("/");
+    navigate("/", window.scrollTo(0, 0));
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
@@ -33,9 +37,10 @@ export const Header = () => {
         document.documentElement.scrollTop > 1
       ) {
         headerRef.current.classList.add("sticky-header");
-      } else {
-        headerRef.current.classList.remove("sticky-header");
       }
+      // else {
+      //   headerRef.current.classList.remove("sticky-header");
+      // }
     };
 
     window.addEventListener("scroll", stickyHeaderFunc);
@@ -92,10 +97,14 @@ export const Header = () => {
                 ) : (
                   <>
                     <Button variant="dark">
-                      <Link to="/login">Login</Link>
+                      <Link to="/login" onClick={scrollToTop}>
+                        Login
+                      </Link>
                     </Button>
                     <Button variant="secondary">
-                      <Link to="/register">Register</Link>
+                      <Link to="/register" onClick={scrollToTop}>
+                        Register
+                      </Link>
                     </Button>
                   </>
                 )}

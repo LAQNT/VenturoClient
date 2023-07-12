@@ -2,27 +2,31 @@ import React, { useRef } from "react";
 import { Container, Col, Form, FormGroup, Button } from "react-bootstrap";
 import "./search-bar.css";
 import { BASE_URL } from "./../utils/config";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SearchBar = () => {
   const countryRef = useRef("");
-  const distanceRef = useRef(0);
+  const maxDistanceRef = useRef(0);
   const groupRef = useRef(0);
   // const difficultyRef = useRef();
   const navigate = useNavigate();
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   const searchHandler = async () => {
     const country = countryRef.current.value;
-    const distance = distanceRef.current.value;
+    const maxDistance = maxDistanceRef.current.value;
     const group = groupRef.current.value;
     // const difficulty = difficultyRef.current.value;
 
-    if (country === "" || distance === "" || group === "") {
+    if (country === "" || maxDistance === "" || group === "") {
       return alert("All fields are required");
     }
 
     const res = await fetch(
-      `${BASE_URL}/tours/search/searchTour?country=${country}&distance=${distance}&numberOfPeople=${group}`
+      `${BASE_URL}/tours/search/searchTour?country=${country}&distance=${maxDistance}&numberOfPeople=${group}`
     );
 
     if (!res.ok) alert("something went wrong");
@@ -30,7 +34,7 @@ const SearchBar = () => {
     const result = await res.json();
 
     navigate(
-      `/tours/search?country=${country}&distance=${distance}&numberOfPeople=${group}`,
+      `/tours/search?country=${country}&distance=${maxDistance}&numberOfPeople=${group}`,
       { state: result.data }
     );
   };
@@ -64,7 +68,7 @@ const SearchBar = () => {
               <input
                 type="number"
                 placeholder="Distance km"
-                ref={distanceRef}
+                ref={maxDistanceRef}
               />
             </FormGroup>
             <FormGroup className="form-group">
@@ -74,10 +78,11 @@ const SearchBar = () => {
                 </span>
                 <h6>Traveler/s</h6>
               </div>
-              <input type="numer" placeholder="0" ref={groupRef} />
+              <input type="number" placeholder="0" ref={groupRef} />
             </FormGroup>
 
             <Button variant="dark" id="search-button" onClick={searchHandler}>
+              {" "}
               <i className="bi bi-search"></i> <span>Search</span>
             </Button>
           </Form>

@@ -8,27 +8,25 @@ const SearchResult = () => {
   const location = useLocation();
   const [data] = useState(location.state);
 
-  console.log(data);
-
   return (
     <>
-      <CommonSection title={"Tour Search Results"}>
-        <section>
-          <Container>
-            <Row>
-              {data.length === 0 ? (
-                <h4 className="text-center">No tour found</h4>
-              ) : (
-                data?.map((tour) => (
-                  <Col lg="3" className="mb-4" key={tour.id}>
-                    <TourCard tour={tour} />
-                  </Col>
-                ))
-              )}
-            </Row>
-          </Container>
-        </section>
-      </CommonSection>
+      <CommonSection />
+      <section>
+        <Container>
+          <Row>
+            <h2 className="text-center mb-5 mt-3">Search Results</h2>
+            {!data || data.length === 0 ? (
+              <h4 className="text-center">No tours found</h4>
+            ) : (
+              data.map((tour) => (
+                <Col lg="3" className="mb-4" key={tour._id}>
+                  <TourCard tour={tour} />
+                </Col>
+              ))
+            )}
+          </Row>
+        </Container>
+      </section>
     </>
   );
 };

@@ -1,5 +1,54 @@
-import React from "react";
+// import React from "react";
+// import { Routes, Route, Navigate } from "react-router-dom";
+// import { useContext } from "react";
+// import { AuthContext } from "../context/AuthContext";
+
+// import Home from "./../pages/Home";
+// import Tours from "./../pages/Tours";
+// import TourDetails from "./../pages/TourDetails";
+// import Login from "./../pages/Login";
+// import Register from "./../pages/Register";
+// import SearchResult from "./../pages/SearchResult";
+// import BackOffice from "../pages/BackOffice/BackOffice";
+// import BackOfficeEditTour from "../pages/BackOffice/BackOfficeEditTour";
+// import BackOfficeAddTour from "../pages/BackOffice/BackOfficeAddTour";
+// import BookedTour from "../pages/BookedTour";
+// import ProtectedRoutes from "../components/middleware/ProtectedRoutes";
+
+// export const Routers = () => {
+//   const { user } = useContext(AuthContext);
+//   return (
+//     <Routes>
+//       <Route path="/" element={<Navigate to="/home" />} />
+
+//       <Route path="/home" element={<Home />} />
+//       <Route path="/tours" element={<Tours />} />
+//       <Route path="/tours/:id" element={<TourDetails />} />
+//       <Route path="/login" element={<Login />} />
+//       <Route path="/register" element={<Register />} />
+//       <Route path="/tours/search" element={<SearchResult />} />
+
+//       {user && user.role === "admin" ? (
+//         <Route path="/*" element={<Navigate to="/backoffice" />} />
+//       ) : (
+//         <Route path="/" element={<Navigate to="/home" />} />
+//       )}
+
+//       <Route element={<ProtectedRoutes />}>
+//         <Route path="/backoffice" element={<BackOffice />} />
+//         <Route
+//           path="/backoffice/editTour/:tourId"
+//           element={<BackOfficeEditTour />}
+//         />
+//         <Route path="/backoffice/addTour" element={<BackOfficeAddTour />} />
+//         <Route path="/bookedTour" element={<BookedTour />} />
+//       </Route>
+//     </Routes>
+//   );
+// };
+import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 import Home from "./../pages/Home";
 import Tours from "./../pages/Tours";
@@ -11,25 +60,36 @@ import BackOffice from "../pages/BackOffice/BackOffice";
 import BackOfficeEditTour from "../pages/BackOffice/BackOfficeEditTour";
 import BackOfficeAddTour from "../pages/BackOffice/BackOfficeAddTour";
 import BookedTour from "../pages/BookedTour";
+import ProtectedRoutes from "../components/middleware/ProtectedRoutes";
 
 export const Routers = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/home" />} />
-
       <Route path="/home" element={<Home />} />
       <Route path="/tours" element={<Tours />} />
       <Route path="/tours/:id" element={<TourDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/tours/search" element={<SearchResult />} />
-      <Route path="/backoffice" element={<BackOffice />} />
-      <Route
-        path="/backoffice/editTour/:tourId"
-        element={<BackOfficeEditTour />}
-      />
-      <Route path="/backoffice/addTour" element={<BackOfficeAddTour />} />
-      <Route path="/bookedTour" element={<BookedTour />} />
+
+      {user ? (
+        <Route path="/*" element={<Navigate to="/backoffice" />} />
+      ) : (
+        <Route path="/" element={<Navigate to="/home" />} />
+      )}
+
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/backoffice" element={<BackOffice />} />
+        <Route
+          path="/backoffice/editTour/:tourId"
+          element={<BackOfficeEditTour />}
+        />
+        <Route path="/backoffice/addTour" element={<BackOfficeAddTour />} />
+        <Route path="/bookedTour" element={<BookedTour />} />
+      </Route>
     </Routes>
   );
 };

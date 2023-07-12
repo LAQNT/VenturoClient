@@ -6,13 +6,14 @@ import "./tour-card.css";
 import avgRating from "../utils/avgRating";
 
 const TourCard = ({ tour }) => {
-  const { _id, title, city, country, photo, price, reviews, featured } = tour;
+  const { _id, title, city, country, photo, price, reviews, bestDeal } = tour;
+  console.log();
 
   // const { totalRating, avgRating } = calculateAvgRating(reviews);
   return (
     <Card className="tour-card">
       <div className="img-container">
-        {featured === true ? (
+        {bestDeal === true ? (
           <span className="card-featured">Best Deal</span>
         ) : null}
         <img src={photo} alt="tour-img" />
@@ -38,7 +39,7 @@ const TourCard = ({ tour }) => {
             <div className="stars">
               <StarsReview totalRating={reviews.rating} />
             </div>
-            <span>({reviews.length} reviews)</span>
+            <span>({reviews && reviews.length} reviews)</span>
           </div>
         </div>
         <div className="card-bottom">

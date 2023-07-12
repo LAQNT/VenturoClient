@@ -65,7 +65,7 @@ const Booking = ({ tour, avgRating }) => {
 
   const serviceFee = 10;
   const totalAmount =
-    Number(price) * Number(booking.guestsNumber) + Number(serviceFee);
+    Number(price) * Number(booking.guestSize) + Number(serviceFee);
 
   return (
     <div className="booking">
@@ -76,9 +76,7 @@ const Booking = ({ tour, avgRating }) => {
         <div className="reviews-stars">
           <StarsReview avgRating={avgRating} />{" "}
           <div className="review-numbers">
-            <span>
-              {avgRating === 0 ? null : parseFloat(avgRating.toFixed(1))}
-            </span>
+            <span>{avgRating === 0 ? null : parseInt(avgRating)}</span>
             <span>({reviews?.length})</span>
           </div>
         </div>
