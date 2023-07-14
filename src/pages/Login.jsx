@@ -11,7 +11,7 @@ const Login = () => {
     password: undefined,
   });
 
-  const { dispatch } = useContext(AuthContext);
+  const { dispatch, role } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -33,17 +33,10 @@ const Login = () => {
       });
 
       const result = await res.json();
-      if (res.ok) localStorage.setItem("user", JSON.stringify(result.token));
       if (!res.ok) alert(result.message);
 
       dispatch({ type: "LOGIN_SUCCESS", payload: result });
-
-      console.log(result);
-      if (result.userRole === "admin") {
-        navigate("/backoffice");
-      } else {
-        navigate("/");
-      }
+      navigate("/backoffice");
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE", payload: error.message });
     }

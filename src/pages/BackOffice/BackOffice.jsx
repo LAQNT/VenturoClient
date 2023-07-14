@@ -51,11 +51,11 @@ function BackOffice() {
             <Button className="mt-3" variant="warning">
               <Link to="/backoffice/addTour">
                 {" "}
-                <i class="bi bi-plus-circle"></i> Add Tour
+                <i className="bi bi-plus-circle"></i> Add Tour
               </Link>{" "}
             </Button>
 
-            <Table className="mt-5 " bordered hover>
+            <Table className="mt-5 mb-5" bordered hover responsive>
               <thead className="text-center">
                 <tr>
                   <th>Position</th>

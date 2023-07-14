@@ -13,9 +13,7 @@ const TourCard = ({ tour }) => {
   return (
     <Card className="tour-card">
       <div className="img-container">
-        {bestDeal === true ? (
-          <span className="card-featured">Best Deal</span>
-        ) : null}
+        {bestDeal ? <span className="card-featured">Best Deal</span> : null}
         <img src={photo} alt="tour-img" />
       </div>
       <div className="tour-card-body">

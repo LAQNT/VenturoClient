@@ -1,23 +1,34 @@
 import jwtDecode from "jwt-decode";
 import { createContext, useEffect, useReducer } from "react";
 
-const session = JSON.parse(localStorage.getItem("user"));
+const userLocalStorage = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : null;
 
 const extractUser = (token) => {
-  const decode = jwtDecode(token);
-  try {
-    return {
-      username: decode.username,
-      role: decode.role,
-    };
-  } catch (error) {
-    console.error("Invalid token:", error);
-    return null;
+  if (token) {
+    let decode = jwtDecode(token);
+    try {
+      return {
+        username: decode.username,
+        role: decode.role,
+      };
+    } catch (error) {
+      console.error("Invalid token:", error);
+      return {
+        username: null,
+        role: null,
+      };
+    }
   }
+  return {
+    username: null,
+    role: null,
+  };
 };
 
-export const initial_state = {
-  user: session ? extractUser(session) : null,
+const initial_state = {
+  token: userLocalStorage ? userLocalStorage.token : null,
   loading: false,
   error: null,
 };
@@ -28,39 +39,47 @@ const AuthReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_START":
       return {
-        user: null,
+        token: null,
         loading: true,
         error: null,
       };
-
     case "LOGIN_SUCCESS":
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          token: action.payload.token,
+          loading: false,
+          error: null,
+        })
+      );
       return {
-        user: action.payload
-          ? {
-              token: action.payload.token,
-              role: action.payload.role,
-              username: action.payload.username,
-            }
-          : null,
+        token: action.payload.token,
         loading: false,
         error: null,
-        isAdmin: action.payload.role === "admin",
       };
     case "LOGIN_FAILURE":
       return {
-        user: null,
+        token: null,
         loading: false,
         error: action.payload,
       };
     case "REGISTER_SUCCESS":
       return {
-        user: null,
+        token: null,
         loading: false,
         error: null,
       };
     case "LOGOUT":
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          token: null,
+          loading: false,
+          error: null,
+        })
+      );
       return {
-        user: null,
+        token: null,
         loading: false,
         error: null,
       };
@@ -73,23 +92,14 @@ const AuthReducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, initial_state);
 
-  // useEffect(() => {
-  //   localStorage.setItem("user", JSON.stringify(state.user));
-  // }, [state.user]);
-  useEffect(() => {
-    if (state.user) {
-      const { token, role, username } = state.user;
-      localStorage.setItem("user", JSON.stringify({ token, role, username }));
-    } else {
-      localStorage.removeItem("user");
-    }
-  }, [state.user]);
-
   return (
     <AuthContext.Provider
       value={{
-        user: state.user,
-        loading: state.loading,
+        token: state.token ? extractUser(state.token) : null,
+        username: state.token ? extractUser(state.token).username : null,
+        email: state.token ? extractUser(state.email).username : null,
+        id: state.token ? extractUser(state._id).username : null,
+        role: state.token ? extractUser(state.token).role : null,
         error: state.error,
         dispatch,
       }}

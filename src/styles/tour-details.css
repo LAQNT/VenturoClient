@@ -1,3 +1,7 @@
+.card {
+  border-radius: 0.5rem !important;
+}
+
 .row-container-details {
   display: flex;
   /* gap: 1rem; */
@@ -5,10 +9,12 @@
 
 .tour-details-img-container {
   overflow: hidden;
+  border: none;
 }
 
 .tour-details-img-container img {
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
   margin-bottom: 2rem;
   height: 20rem;
 }
@@ -50,6 +56,12 @@
   width: 50%;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+.rating-selected {
+  color: #3e2f00;
+  transform: scale(1.2);
 }
 
 span .bi-star-fill {
@@ -77,7 +89,7 @@ span .bi-star-fill {
 
 /* ----- post review ----- */
 .tour-reviews {
-  margin-top: 3rem;
+  margin: 5rem 0;
   display: flex;
   justify-content: space-between;
   gap: 4rem;

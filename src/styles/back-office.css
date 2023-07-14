@@ -9,6 +9,10 @@ td {
   text-overflow: ellipsis;
 }
 
+table {
+  margin-bottom: 5rem;
+}
+
 button a {
   color: black;
   font-weight: 600;

@@ -7,13 +7,9 @@ import useFetch from "../../hooks/useFetch";
 import { BASE_URL } from "./../../utils/config";
 
 const FeaturedToursList = () => {
-  const {
-    data: featuredTours,
-    loading,
-    error,
-  } = useFetch(`${BASE_URL}/tours/search/featuredTours`);
+  const { data: featuredTours, loading, error } = useFetch(`${BASE_URL}/tours`);
 
-  console.log(featuredTours);
+  const bestDealTours = featuredTours?.filter((tour) => tour.bestDeal === true);
 
   return (
     <>
@@ -23,7 +19,7 @@ const FeaturedToursList = () => {
         <Row className="gy-4">
           {!loading &&
             !error &&
-            featuredTours?.map((tour) => {
+            bestDealTours?.map((tour) => {
               return (
                 <Col
                   xs="8"

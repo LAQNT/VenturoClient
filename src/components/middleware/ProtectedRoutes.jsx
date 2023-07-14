@@ -1,56 +1,57 @@
-import React, { useEffect, useContext } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import jwt_decode from "jwt-decode";
-import Login from "../../pages/Login";
+// import React, { useEffect, useContext } from "react";
+// import { Outlet, useNavigate, Navigate } from "react-router-dom";
+// import { AuthContext } from "../../context/AuthContext";
+// import Home from "../../pages/Home";
 
 // const useAuth = () => {
-//   const { user } = useContext(AuthContext);
-//   return user;
+//   const { role } = useContext(AuthContext);
+//   return role;
 // };
 
 // const useSession = () => {
-//   const user = useAuth();
+//   const adminSession = useAuth();
 //   const navigate = useNavigate();
 
 //   useEffect(() => {
-//     if (!user) {
-//       navigate("/", { replace: true });
-//     } else if (user.role === "admin") {
-//       navigate("/backoffice", { replace: true });
+//     if (adminSession === "admin") {
+//       navigate("/backoffice");
+//     } else {
+//       navigate("/");
 //     }
-//   }, [navigate, user]);
+//   }, [navigate, adminSession]);
 
-//   return user;
+//   return adminSession;
 // };
 
 // export default function ProtectedRoutes() {
 //   const isAuthorized = useAuth();
-//   const session = useSession();
-//   return isAuthorized ? <Outlet /> : <Login />;
+//   console.log(isAuthorized);
+//   const adminSession = useSession();
+
+//   return isAuthorized === "admin" ? <Outlet /> : <Home />;
 // }
+import React, { useEffect, useContext } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import Login from "../../pages/Login";
+import Home from "../../pages/Home";
+
 const useAuth = () => {
-  const { user } = useContext(AuthContext);
-  return user;
-};
-
-const useSession = () => {
-  const user = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user) {
-      navigate("/", { replace: true });
-    } else if (user.role === "admin") {
-      navigate("/backoffice", { replace: true });
-    }
-  }, [navigate, user]);
-
-  return user;
+  const { role } = useContext(AuthContext);
+  return role;
 };
 
 export default function ProtectedRoutes() {
   const isAuthorized = useAuth();
-  const session = useSession();
-  return isAuthorized ? <Outlet /> : <Login />;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthorized !== "admin") {
+      navigate("/");
+    } else {
+      navigate("/backoffice");
+    }
+  }, [isAuthorized, navigate]);
+
+  return isAuthorized === "admin" ? <Outlet /> : <Home />;
 }

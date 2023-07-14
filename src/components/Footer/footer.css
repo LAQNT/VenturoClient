@@ -2,16 +2,17 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  justify-self: self-end;
   height: 15rem;
   background-color: #fbfbfb;
   color: gray;
   border-top: 1px solid rgb(218, 218, 218);
-  margin-top: 7rem;
+  margin-top: 5rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: relative;
 }
-
-/* .footer-top > span {
-  font-size: 1rem;
-} */
 
 footer a,
 footer span {

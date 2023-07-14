@@ -50,9 +50,6 @@ const TourDetails = () => {
                     <StarsReview avgRating={avgRating} />
                     <div className="detail-tour-reviews-numbers">
                       <span>
-                        {avgRating === 0 ? null : parseInt(avgRating)}
-                      </span>
-                      <span>
                         {totalRating === 0 ? (
                           "Not rated"
                         ) : (

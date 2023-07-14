@@ -14,50 +14,50 @@ function TourReviews() {
   const { id } = useParams();
   const [tourRating, setTourRating] = useState(null);
   const reviewMsgRef = useRef("");
-  const { user } = useContext(AuthContext);
+  const { username, token } = useContext(AuthContext);
 
   const { data: reviews } = useFetch(`${BASE_URL}/review/${id}/reviews`);
   const [allReviews, setAllReviews] = useState([]);
 
   useEffect(() => {
-    if (reviews) {
-      setAllReviews(reviews);
-    }
-  }, [reviews]);
+    setAllReviews(reviews);
+  }, [reviews, allReviews]);
 
   console.log(allReviews);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const reviewText = reviewMsgRef.current.value;
 
     try {
-      if (!user || user === undefined || user === null) {
+      if (!username || username === undefined || username === null) {
         alert("Please sign in");
       }
 
-      console.log(user);
+      console.log(username);
 
       const reviewObj = {
         tourId: id,
-        username: user?.username,
-        reviewText: reviewText,
+        username: username,
+        reviewText: reviewMsgRef.current.value,
         rating: tourRating,
       };
-      console.log(reviewObj);
+
+      const tokenjwt = JSON.parse(localStorage.getItem("user")).token;
 
       const res = await fetch(`${BASE_URL}/review/${id}`, {
         method: "post",
         headers: {
           "content-type": "application/json",
+          data: tokenjwt,
         },
-        credentials: "include",
         body: JSON.stringify(reviewObj),
+        credentials: "include",
       });
 
       const result = await res.json();
+      console.log(result);
 
-      if (!res.ok) {
+      if (!result.ok) {
         alert(res.message);
       } else {
         id.slice(0, -1);
@@ -141,7 +141,7 @@ function TourReviews() {
                   <div className="user-reviews-top">
                     <img src={userImg} alt="" />
                     <span>{rev.username}</span>
-                    <StarsReview totalRating={Number(rev.rating)} />
+                    <StarsReview totalRating={rev.rating} />
                   </div>
 
                   <div className="user-reviews-rating-data">
@@ -161,7 +161,7 @@ function TourReviews() {
                   <div className="user-reviews-top">
                     <img src={userImg} alt="" />
                     <span>{rev.username}</span>
-                    <StarsReview totalRating={Number(rev.rating)} />
+                    <StarsReview totalRating={rev.rating} />
                   </div>
 
                   <div className="user-reviews-rating-data">

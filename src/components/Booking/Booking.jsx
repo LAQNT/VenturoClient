@@ -16,15 +16,15 @@ const Booking = ({ tour, avgRating }) => {
   const { price, reviews, title } = tour;
   const navigate = useNavigate();
 
-  const { user } = useContext(AuthContext);
+  const { username, id, email } = useContext(AuthContext);
 
   const [booking, setBooking] = useState({
-    userId: user && user._id,
-    userEmail: user && user.email,
+    userId: id,
+    userEmail: email,
     tourName: title,
     fullName: "",
     phone: "",
-    guestsNumber: 1,
+    guestSize: 1,
     bookAt: "",
   });
 
@@ -36,7 +36,7 @@ const Booking = ({ tour, avgRating }) => {
     e.preventDefault();
 
     try {
-      if (!user || user === undefined || user === null) {
+      if (!username || username === undefined || username === null) {
         return alert("Please sign in");
       }
 
@@ -65,7 +65,11 @@ const Booking = ({ tour, avgRating }) => {
 
   const serviceFee = 10;
   const totalAmount =
-    Number(price) * Number(booking.guestSize) + Number(serviceFee);
+    Number(tour.price) * Number(booking.guestSize) + Number(serviceFee);
+  console.log(totalAmount);
+  console.log(booking);
+  console.log(serviceFee);
+  console.log(tour.price);
 
   return (
     <div className="booking">
@@ -76,8 +80,7 @@ const Booking = ({ tour, avgRating }) => {
         <div className="reviews-stars">
           <StarsReview avgRating={avgRating} />{" "}
           <div className="review-numbers">
-            <span>{avgRating === 0 ? null : parseInt(avgRating)}</span>
-            <span>({reviews?.length})</span>
+            <span>({reviews?.length} reviews)</span>
           </div>
         </div>
       </div>
@@ -127,17 +130,17 @@ const Booking = ({ tour, avgRating }) => {
 
       <div className="booking-bottom">
         <ListGroup>
-          <ListGroupItem>
+          <ListGroupItem className="d-flex justify-content-between ">
             <span>Price per Person: </span>
             <span>€ {price} </span>
           </ListGroupItem>
 
-          <ListGroupItem>
+          <ListGroupItem className="d-flex justify-content-between ">
             <span>Service Charge:</span>
             <span> € {serviceFee}</span>
           </ListGroupItem>
 
-          <ListGroupItem>
+          <ListGroupItem className="d-flex justify-content-between ">
             <span>Total: </span>
             <span> € {totalAmount}</span>
           </ListGroupItem>

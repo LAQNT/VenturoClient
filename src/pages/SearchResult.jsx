@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import CommonSection from "../shared/CommonSection";
 import { Container, Row, Col } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
@@ -6,7 +6,11 @@ import TourCard from "./../shared/TourCard";
 
 const SearchResult = () => {
   const location = useLocation();
-  const [data] = useState(location.state);
+  const [data, setData] = useState(location.state);
+
+  useEffect(() => {
+    setData(location.state);
+  }, [location.state]);
 
   return (
     <>

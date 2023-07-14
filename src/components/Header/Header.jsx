@@ -19,11 +19,12 @@ const navLinks = [
 export const Header = () => {
   const headerRef = useRef(null);
   const navigate = useNavigate();
-  const { user, dispatch } = useContext(AuthContext);
+  const { username, dispatch, role } = useContext(AuthContext);
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     navigate("/", window.scrollTo(0, 0));
+    localStorage.clear();
   };
 
   const scrollToTop = () => {
@@ -38,9 +39,6 @@ export const Header = () => {
       ) {
         headerRef.current.classList.add("sticky-header");
       }
-      // else {
-      //   headerRef.current.classList.remove("sticky-header");
-      // }
     };
 
     window.addEventListener("scroll", stickyHeaderFunc);
@@ -61,6 +59,15 @@ export const Header = () => {
                 <img src={logo} alt="" />
               </NavLink>
             </div>
+            {role === "admin" ? (
+              <Button variant="danger" className="back-office-btn">
+                <Link to="/backoffice" onClick={scrollToTop}>
+                  Back Office
+                </Link>
+              </Button>
+            ) : (
+              <></>
+            )}
             {/* ---- */}
             {/* menu */}
             <div className="navigation-menu">
@@ -87,9 +94,9 @@ export const Header = () => {
             {/* ---- */}
             <div className="nav-buttons">
               <div className="nav-user">
-                {user ? (
+                {username ? (
                   <>
-                    <span className="user-name">{user.username}</span>
+                    <span className="user-name">{username}</span>
                     <Button variant="secondary" onClick={logout}>
                       Logout
                     </Button>

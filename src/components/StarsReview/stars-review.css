@@ -1,4 +1,5 @@
 .tour-rating i {
   font-size: 0.8rem;
   color: #f8c93f;
+  cursor: pointer;
 }
