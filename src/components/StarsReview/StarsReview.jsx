@@ -1,8 +1,8 @@
 import React from "react";
 import "./stars-review.css";
 
-const StarsReview = ({ avgRating, totalRating }) => {
-  if (avgRating !== null && totalRating === undefined) {
+const StarsReview = ({ avgRating, singleRating }) => {
+  if (avgRating !== null && singleRating === undefined) {
     const renderAvgStars = () => {
       const stars = [];
       for (let i = 1; i <= 5; i++) {
@@ -15,11 +15,11 @@ const StarsReview = ({ avgRating, totalRating }) => {
       return stars;
     };
     return <div className="tour-rating">{renderAvgStars()}</div>;
-  } else if (totalRating !== undefined && avgRating === null) {
+  } else if (singleRating !== undefined && avgRating === null) {
     const renderStars = () => {
       const stars = [];
       for (let i = 1; i <= 5; i++) {
-        if (i <= totalRating) {
+        if (i <= singleRating) {
           stars.push(<i className="bi bi-star-fill" key={i} />);
         } else {
           stars.push(<i className="bi bi-star" key={i} />);
@@ -27,11 +27,7 @@ const StarsReview = ({ avgRating, totalRating }) => {
       }
       return stars;
     };
-    return (
-      <div className="tour-rating">
-        {renderStars()} ({totalRating})
-      </div>
-    );
+    return <div className="tour-rating">{renderStars()}</div>;
   } else {
     return null;
   }

@@ -152,9 +152,13 @@ span .bi-star-fill {
   color: #3e2f00;
 
   position: absolute;
-  bottom: 0.45rem;
+  bottom: 0.6rem;
   font-size: 0.7rem;
   z-index: 1;
+}
+
+.star-post-review span:active {
+  color: #f7f7f7;
 }
 
 .star-post-review i {
@@ -162,8 +166,14 @@ span .bi-star-fill {
   left: 0;
   color: #f8d363;
   z-index: 0;
+  border: 1px solid #f1e2b3;
+  padding: 0.1rem;
 }
 
+.star-post-review i:active {
+  background-color: #ffbf00;
+  color: #ffffff;
+}
 .span-price {
   margin-top: 1rem;
   font-size: 1.2rem;

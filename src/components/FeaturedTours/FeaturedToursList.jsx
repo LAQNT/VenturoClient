@@ -5,6 +5,7 @@ import { Col, Row, Container } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
 import useFetch from "../../hooks/useFetch";
 import { BASE_URL } from "./../../utils/config";
+import calculateAvgRating from "../../utils/avgRating";
 
 const FeaturedToursList = () => {
   const { data: featuredTours, loading, error } = useFetch(`${BASE_URL}/tours`);

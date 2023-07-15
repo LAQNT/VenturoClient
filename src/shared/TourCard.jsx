@@ -1,15 +1,16 @@
-import React from "react";
+import { React, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import StarsReview from "../components/StarsReview/StarsReview";
 import "./tour-card.css";
 import avgRating from "../utils/avgRating";
+import calculateAvgRating from "../utils/avgRating";
 
 const TourCard = ({ tour }) => {
   const { _id, title, city, country, photo, price, reviews, bestDeal } = tour;
-  console.log();
 
-  // const { totalRating, avgRating } = calculateAvgRating(reviews);
+  const avgRating = calculateAvgRating(reviews);
+
   return (
     <Card className="tour-card">
       <div className="img-container">
@@ -35,9 +36,8 @@ const TourCard = ({ tour }) => {
           </div>
           <div className="tour-rating">
             <div className="stars">
-              <StarsReview totalRating={reviews.rating} />
+              <StarsReview avgRating={avgRating.avgRating} />
             </div>
-            <span>({reviews && reviews.length} reviews)</span>
           </div>
         </div>
         <div className="card-bottom">

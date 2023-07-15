@@ -133,6 +133,10 @@
   display: flex;
 }
 
+.tour-card .tour-rating i {
+  font-size: 1.1rem;
+}
+
 h5 span {
   font-size: 0.8rem;
   font-weight: 400;

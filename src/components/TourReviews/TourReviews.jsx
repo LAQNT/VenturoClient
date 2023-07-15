@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import userImg from "../../assets/imgs/default_user.jpg";
-import axios from "axios";
 import "../../styles/tour-details.css";
 import { Row, Form, ListGroup, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -16,14 +15,10 @@ function TourReviews() {
   const reviewMsgRef = useRef("");
   const { username, token } = useContext(AuthContext);
 
-  const { data: reviews } = useFetch(`${BASE_URL}/review/${id}/reviews`);
+  const { data: reviews, refetch } = useFetch(
+    `${BASE_URL}/review/${id}/reviews`
+  );
   const [allReviews, setAllReviews] = useState([]);
-
-  useEffect(() => {
-    setAllReviews(reviews);
-  }, [reviews, allReviews]);
-
-  console.log(allReviews);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +26,7 @@ function TourReviews() {
     try {
       if (!username || username === undefined || username === null) {
         alert("Please sign in");
+        return;
       }
 
       console.log(username);
@@ -58,21 +54,22 @@ function TourReviews() {
       console.log(result);
 
       if (!result.ok) {
-        alert(res.message);
+        alert(result.message);
       } else {
-        id.slice(0, -1);
-        const response = await axios.get(`${BASE_URL}/review/${id}/reviews`);
-        const newReviews = response.data;
-        setAllReviews(newReviews);
-        console.log(allReviews);
+        reviewMsgRef.current.value = "";
+        setTourRating(null);
+        refetch();
       }
     } catch (error) {
       alert(error.message);
     }
   };
 
+  useEffect(() => {
+    setAllReviews(reviews);
+  }, [reviews]);
+
   const { totalRating, avgRating } = calculateAvgRating(reviews);
-  console.log(totalRating);
   const options = { day: "numeric", month: "long", year: "numeric" };
 
   return (
@@ -135,47 +132,23 @@ function TourReviews() {
           <h4>
             Reviews <span>({allReviews.length} reviews)</span>
           </h4>
-          {allReviews
-            ? allReviews.map((rev) => (
-                <div className="review-item" key={rev._id}>
-                  <div className="user-reviews-top">
-                    <img src={userImg} alt="" />
-                    <span>{rev.username}</span>
-                    <StarsReview totalRating={rev.rating} />
-                  </div>
+          {allReviews.map((rev) => (
+            <div className="review-item" key={rev._id}>
+              <div className="user-reviews-top">
+                <img src={userImg} alt="" />
+                <span>{rev.username}</span>
+                <StarsReview singleRating={3} />
+              </div>
 
-                  <div className="user-reviews-rating-data">
-                    <span>
-                      {new Date(rev.createdAt).toLocaleDateString(
-                        "en-US",
-                        options
-                      )}
-                    </span>
-                  </div>
+              <div className="user-reviews-rating-data">
+                <span>
+                  {new Date(rev.createdAt).toLocaleDateString("en-US", options)}
+                </span>
+              </div>
 
-                  <p>{rev.reviewText}</p>
-                </div>
-              ))
-            : reviews.map((rev) => (
-                <div className="review-item" key={rev._id}>
-                  <div className="user-reviews-top">
-                    <img src={userImg} alt="" />
-                    <span>{rev.username}</span>
-                    <StarsReview totalRating={rev.rating} />
-                  </div>
-
-                  <div className="user-reviews-rating-data">
-                    <span>
-                      {new Date(rev.createdAt).toLocaleDateString(
-                        "en-US",
-                        options
-                      )}
-                    </span>
-                  </div>
-
-                  <p>{rev.reviewText}</p>
-                </div>
-              ))}
+              <p>{rev.reviewText}</p>
+            </div>
+          ))}
         </ListGroup>
       </div>
     </>
