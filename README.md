@@ -4,7 +4,7 @@
 
 ## Description
 
-📚 This repository contains the front-end code for my capstone project for the Epicode Bootcamp. The project is a web application that helps the user search and organize tours.
+📚 This repository contains the front-end code for my capstone project for the Epicode Bootcamp. The project is a web application that helps the user search and book tours.
 
 ## Features
 
@@ -14,6 +14,7 @@
 
 ✨ User can post reviews for every tour
 
+✨ User can book a tour
 
 
 ## Technologies Used
@@ -29,13 +30,18 @@
 ## Screenshots
 📷 
 
-Home Page
+Home Page:
+
 ![image](https://github.com/LAQNT/VenturoClient/assets/119738902/6dfd4c77-8b13-4923-ac38-a0b0b15c8aeb)
 
-Tours
+
+Tours:
+
 ![image](https://github.com/LAQNT/VenturoClient/assets/119738902/139621f8-b470-424f-aa6b-da05d4e09d56)
 
-Tour Details
+
+Tour Details:
+
 ![image](https://github.com/LAQNT/VenturoClient/assets/119738902/456d3975-b240-4045-9b78-8415e9476910)
 
 
