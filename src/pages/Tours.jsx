@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
-import { Spinner, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import CommonSection from "../shared/CommonSection";
-import SearchBar from "../shared/SearchBar";
 import TourCard from "../shared/TourCard";
 import "../styles/tours.css";
 import useFetch from "../hooks/useFetch";
@@ -49,7 +48,7 @@ const Tours = () => {
               ))}
 
               <Col lg="12">
-                <div className="pagination text-center mt-5">
+                <div className="pagination text-center my-5">
                   {[...Array(pageCount).keys()].map((number) => (
                     <span
                       key={number}

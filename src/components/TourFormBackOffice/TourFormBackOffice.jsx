@@ -141,7 +141,7 @@ function TourFormBackOffice({
           <Form.Select
             name="dificulty"
             placeholder={formActual.dificulty}
-            value={formData.dificulty}
+            value={formData.dificulty || "default"}
             onChange={handleInputChange}
             isInvalid={formSubmitted && !formData.dificulty}
           >

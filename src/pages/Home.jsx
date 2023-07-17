@@ -47,7 +47,6 @@ const Home = () => {
                 <img src={imageOffers} alt="" />
               </div>
             </Col>
-            {/* <Col>COL2</Col> */}
           </Row>
         </Container>
       </section>
@@ -55,8 +54,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12">
-              {/* <Subtitle subtitle={"Explore"} /> */}
-              <h2 className="category-title">Best Deals</h2>
+              <h2 className="category-title text-center mb-4">Best Deals</h2>
             </Col>
             <FeaturedToursList />
           </Row>

@@ -8,9 +8,13 @@ import { BASE_URL } from "./../../utils/config";
 import calculateAvgRating from "../../utils/avgRating";
 
 const FeaturedToursList = () => {
-  const { data: featuredTours, loading, error } = useFetch(`${BASE_URL}/tours`);
+  const {
+    data: bestDealTours,
+    loading,
+    error,
+  } = useFetch(`${BASE_URL}/tours/search/featuredTours`);
 
-  const bestDealTours = featuredTours?.filter((tour) => tour.bestDeal === true);
+  // const bestDealTours = featuredTours?.filter((tour) => tour.bestDeal === true);
 
   return (
     <>
@@ -29,7 +33,7 @@ const FeaturedToursList = () => {
                   lg="4"
                   xl="4"
                   xxl="3"
-                  className="mx-sm-auto mx-xs-auto mx-md-0"
+                  className="mx-auto mx-xs-auto mx-md-0"
                   key={tour._id}
                 >
                   <TourCard tour={tour} />

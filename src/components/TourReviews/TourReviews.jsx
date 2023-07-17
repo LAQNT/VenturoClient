@@ -66,6 +66,14 @@ function TourReviews() {
   };
 
   const options = { day: "numeric", month: "long", year: "numeric" };
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return "posted now";
+    } else {
+      return date.toLocaleDateString("en-US", options);
+    }
+  };
 
   return (
     <>
@@ -154,9 +162,7 @@ function TourReviews() {
               </div>
 
               <div className="user-reviews-rating-data">
-                <span>
-                  {new Date(rev.createdAt).toLocaleDateString("en-US", options)}
-                </span>
+                <span>{formatDate(rev.createdAt)}</span>
               </div>
 
               <p>{rev.reviewText}</p>

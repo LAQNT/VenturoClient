@@ -15,7 +15,7 @@ const SearchResult = () => {
   return (
     <>
       <CommonSection />
-      <section>
+      <section className="mb-5">
         <Container>
           <Row>
             <h2 className="text-center mb-5 mt-3">Search Results</h2>

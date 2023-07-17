@@ -36,7 +36,7 @@ const Login = () => {
       if (!res.ok) alert(result.message);
 
       dispatch({ type: "LOGIN_SUCCESS", payload: result });
-      // navigate("/backoffice");
+      navigate("/backoffice");
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE", payload: error.message });
     }

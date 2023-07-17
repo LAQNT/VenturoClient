@@ -14,7 +14,9 @@ function BackOffice() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/v1/tours`);
+      const response = await axios.get(
+        `http://localhost:3001/api/v1/tours/alltours`
+      );
       setTours(response.data.data);
       setIsLoading(false);
     } catch (error) {
