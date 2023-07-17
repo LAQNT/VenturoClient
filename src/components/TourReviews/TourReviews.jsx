@@ -16,14 +16,12 @@ function TourReviews() {
   const reviewMsgRef = useRef("");
   const { username, token } = useContext(AuthContext);
 
-  const { data: reviews, refetch } = useFetch(
-    `${BASE_URL}/review/${id}/reviews`
-  );
-  const [allReviews, setAllReviews] = useState([]);
+  const { data: reviews } = useFetch(`${BASE_URL}/review/${id}/reviews`);
+  const [allReviews, setAllReviews] = useState(reviews || []);
 
   useEffect(() => {
     setAllReviews(reviews);
-  }, [allReviews, reviews]);
+  }, [reviews]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,8 +31,6 @@ function TourReviews() {
         alert("Please sign in");
         return;
       }
-
-      console.log(username);
 
       const reviewObj = {
         tourId: id,
@@ -56,10 +52,10 @@ function TourReviews() {
       });
 
       const result = await res.json();
-      console.log(result);
 
       if (!result.ok) {
         alert(result.message);
+        setAllReviews([reviewObj, ...allReviews]);
       } else {
         reviewMsgRef.current.value = "";
         setTourRating(null);
@@ -83,28 +79,43 @@ function TourReviews() {
 
                   <div className="rating">
                     <div className="star-post-review">
-                      <span onClick={() => setTourRating(1)}>1</span>
-                      <i className="bi bi-star-fill" />
+                      <span>1</span>
+                      <i
+                        className="bi bi-star-fill"
+                        onClick={() => setTourRating(1)}
+                      />
                     </div>
 
                     <div className="star-post-review">
-                      <span onClick={() => setTourRating(2)}>2</span>
-                      <i className="bi bi-star-fill" />
+                      <span>2</span>
+                      <i
+                        className="bi bi-star-fill"
+                        onClick={() => setTourRating(2)}
+                      />
                     </div>
 
                     <div className="star-post-review">
-                      <span onClick={() => setTourRating(3)}>3</span>
-                      <i className="bi bi-star-fill" />
+                      <span>3</span>
+                      <i
+                        className="bi bi-star-fill"
+                        onClick={() => setTourRating(3)}
+                      />
                     </div>
 
                     <div className="star-post-review">
-                      <span onClick={() => setTourRating(4)}>4</span>
-                      <i className="bi bi-star-fill" />
+                      <span>4</span>
+                      <i
+                        className="bi bi-star-fill"
+                        onClick={() => setTourRating(4)}
+                      />
                     </div>
 
                     <div className="star-post-review">
-                      <span onClick={() => setTourRating(5)}>5</span>
-                      <i className="bi bi-star-fill" />
+                      <span>5</span>
+                      <i
+                        className="bi bi-star-fill"
+                        onClick={() => setTourRating(5)}
+                      />
                     </div>
                   </div>
                   <Form.Control

@@ -43,7 +43,14 @@ function BackOffice() {
   return (
     <>
       {isLoading ? (
-        <Spinner animation="border" role="status" variant="warning" />
+        <Container className="fluid">
+          <Spinner
+            animation="border"
+            role="status"
+            variant="warning"
+            className="mx-auto mt-5"
+          />
+        </Container>
       ) : (
         <>
           <Container className="mt-5">

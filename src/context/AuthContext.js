@@ -12,6 +12,8 @@ const extractUser = (token) => {
       return {
         username: decode.username,
         role: decode.role,
+        email: decode.email,
+        id: decode.id,
       };
     } catch (error) {
       console.error("Invalid token:", error);
@@ -97,8 +99,8 @@ export const AuthContextProvider = ({ children }) => {
       value={{
         token: state.token ? extractUser(state.token) : null,
         username: state.token ? extractUser(state.token).username : null,
-        email: state.token ? extractUser(state.email).username : null,
-        id: state.token ? extractUser(state._id).username : null,
+        email: state.token ? extractUser(state.token).email : null,
+        id: state.token ? extractUser(state.token)._id : null,
         role: state.token ? extractUser(state.token).role : null,
         error: state.error,
         dispatch,

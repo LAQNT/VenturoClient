@@ -16,8 +16,11 @@ const Booking = ({ tour, avgRating }) => {
   const { price, reviews, title } = tour;
   const navigate = useNavigate();
 
-  const { username, id, email } = useContext(AuthContext);
+  const { username, id, email, token } = useContext(AuthContext);
 
+  console.log(id);
+  console.log(email);
+  console.log(username);
   const [booking, setBooking] = useState({
     userId: id,
     userEmail: email,
@@ -40,10 +43,13 @@ const Booking = ({ tour, avgRating }) => {
         return alert("Please sign in");
       }
 
+      const tokenjwt = JSON.parse(localStorage.getItem("user")).token;
+
       const res = await fetch(`${BASE_URL}/booking`, {
         method: "post",
         headers: {
           "content-type": "application/json",
+          data: tokenjwt,
         },
         credentials: "include",
         body: JSON.stringify(booking),
@@ -66,10 +72,6 @@ const Booking = ({ tour, avgRating }) => {
   const serviceFee = 10;
   const totalAmount =
     Number(tour.price) * Number(booking.guestSize) + Number(serviceFee);
-  console.log(totalAmount);
-  console.log(booking);
-  console.log(serviceFee);
-  console.log(tour.price);
 
   return (
     <div className="booking">

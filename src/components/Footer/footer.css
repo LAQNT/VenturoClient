@@ -1,3 +1,18 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  display: block;
+  height: 15rem;
+}
+
 footer {
   display: flex;
   flex-direction: column;
@@ -8,10 +23,9 @@ footer {
   color: gray;
   border-top: 1px solid rgb(218, 218, 218);
   margin-top: 5rem;
+  position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  position: relative;
+  width: 100%;
 }
 
 footer a,

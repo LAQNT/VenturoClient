@@ -30,28 +30,47 @@
 
 //   return isAuthorized === "admin" ? <Outlet /> : <Home />;
 // }
+// import React, { useEffect, useContext } from "react";
+// import { Outlet, useNavigate } from "react-router-dom";
+// import { AuthContext } from "../../context/AuthContext";
+// import Login from "../../pages/Login";
+// import Home from "../../pages/Home";
+
+// const useAuth = () => {
+//   const { role } = useContext(AuthContext);
+//   return role;
+// };
+
+// export default function ProtectedRoutes() {
+//   const isAuthorized = useAuth();
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     if (isAuthorized !== "admin") {
+//       navigate("/");
+//     } else {
+//       navigate("/backoffice");
+//     }
+//   }, [isAuthorized, navigate]);
+
+//   return isAuthorized === "admin" ? <Outlet /> : <Home />;
+// }
 import React, { useEffect, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import Login from "../../pages/Login";
 import Home from "../../pages/Home";
 
-const useAuth = () => {
+const ProtectedRoutes = ({ children }) => {
   const { role } = useContext(AuthContext);
-  return role;
-};
-
-export default function ProtectedRoutes() {
-  const isAuthorized = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthorized !== "admin") {
+    if (role !== "admin") {
       navigate("/");
-    } else {
-      navigate("/backoffice");
     }
-  }, [isAuthorized, navigate]);
+  }, [role, navigate]);
 
-  return isAuthorized === "admin" ? <Outlet /> : <Home />;
-}
+  return role === "admin" ? <Outlet /> : <Home />;
+};
+
+export default ProtectedRoutes;
