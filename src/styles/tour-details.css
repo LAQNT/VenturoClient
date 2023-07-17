@@ -134,6 +134,10 @@ span .bi-star-fill {
   font-size: 1rem;
 }
 
+.user-reviews p::first-letter {
+  text-transform: capitalize;
+}
+
 .review-input {
   display: flex;
   flex-direction: column;
@@ -190,4 +194,8 @@ span .bi-star-fill {
 .img-username {
   display: flex;
   gap: 0.7rem;
+}
+
+.img-username span {
+  font-weight: 600;
 }

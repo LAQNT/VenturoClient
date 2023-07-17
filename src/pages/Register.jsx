@@ -7,7 +7,7 @@ import { BASE_URL } from "../utils/config";
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
-    userName: undefined,
+    username: undefined,
     email: undefined,
     password: undefined,
   });
@@ -29,6 +29,7 @@ const Register = () => {
         },
         body: JSON.stringify(credentials),
       });
+      console.log(res);
       const result = await res.json();
       if (!res.ok) alert(result.message);
       dispatch({ type: "REGISTER_SUCCESS" });
@@ -58,7 +59,7 @@ const Register = () => {
                     type="text"
                     placeholder="Username"
                     required
-                    id="userName"
+                    id="username"
                     onChange={handleChange}
                   />
                 </FormGroup>
