@@ -23,7 +23,16 @@ const SearchResult = () => {
               <h4 className="text-center">No tours found</h4>
             ) : (
               data.map((tour) => (
-                <Col lg="3" className="mb-4" key={tour._id}>
+                <Col
+                  xs="8"
+                  sm="8"
+                  md="6"
+                  lg="4"
+                  xl="4"
+                  xxl="3"
+                  className="mx-sm-auto mx-xs-auto "
+                  key={tour._id}
+                >
                   <TourCard tour={tour} />
                 </Col>
               ))

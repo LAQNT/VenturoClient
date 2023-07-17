@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import userImg from "../../assets/imgs/default_user.jpg";
+import axios from "axios";
 import "../../styles/tour-details.css";
 import { Row, Form, ListGroup, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -19,6 +20,10 @@ function TourReviews() {
     `${BASE_URL}/review/${id}/reviews`
   );
   const [allReviews, setAllReviews] = useState([]);
+
+  useEffect(() => {
+    setAllReviews(reviews);
+  }, [allReviews, reviews]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,18 +63,12 @@ function TourReviews() {
       } else {
         reviewMsgRef.current.value = "";
         setTourRating(null);
-        refetch();
       }
     } catch (error) {
       alert(error.message);
     }
   };
 
-  useEffect(() => {
-    setAllReviews(reviews);
-  }, [reviews]);
-
-  const { totalRating, avgRating } = calculateAvgRating(reviews);
   const options = { day: "numeric", month: "long", year: "numeric" };
 
   return (
@@ -135,9 +134,12 @@ function TourReviews() {
           {allReviews.map((rev) => (
             <div className="review-item" key={rev._id}>
               <div className="user-reviews-top">
-                <img src={userImg} alt="" />
-                <span>{rev.username}</span>
-                <StarsReview singleRating={3} />
+                <div className="img-username">
+                  <img src={userImg} alt="" />
+                  <span>{rev.username}</span>
+                </div>
+
+                <StarsReview singleRating={rev.rating} />
               </div>
 
               <div className="user-reviews-rating-data">

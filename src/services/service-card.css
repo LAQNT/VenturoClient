@@ -6,7 +6,7 @@
 .service-card {
   border: 1px solid rgb(199, 215, 210);
 
-  padding: 0.5rem 1.5rem;
+  padding: 1.5rem 1rem;
   box-shadow: 2px 2px 3px rgb(222, 222, 222);
   border-radius: 0.5rem;
   display: flex;

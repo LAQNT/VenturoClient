@@ -107,6 +107,10 @@ span .bi-star-fill {
   gap: 1rem;
 }
 
+.review-item {
+  border-bottom: 1px solid rgb(232, 232, 232);
+}
+
 .user-reviews .review-item img {
   width: 1.7rem;
   border-radius: 50%;
@@ -117,6 +121,7 @@ span .bi-star-fill {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8rem;
+  justify-content: space-between;
 }
 
 .user-reviews-rating-data span {
@@ -125,7 +130,8 @@ span .bi-star-fill {
 }
 
 .user-reviews p {
-  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  font-size: 1rem;
 }
 
 .review-input {
@@ -162,11 +168,10 @@ span .bi-star-fill {
 }
 
 .star-post-review i {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   left: 0;
   color: #f8d363;
   z-index: 0;
-  border: 1px solid #f1e2b3;
   padding: 0.1rem;
 }
 
@@ -180,4 +185,9 @@ span .bi-star-fill {
   font-weight: 600;
   border: 1px solid rgb(207, 207, 207);
   padding: 0.5rem;
+}
+
+.img-username {
+  display: flex;
+  gap: 0.7rem;
 }
