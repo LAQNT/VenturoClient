@@ -56,8 +56,8 @@ function TourReviews() {
       if (!result.ok) {
         alert(result.message);
         setAllReviews([reviewObj, ...allReviews]);
-      } else {
         reviewMsgRef.current.value = "";
+      } else {
         setTourRating(null);
       }
     } catch (error) {

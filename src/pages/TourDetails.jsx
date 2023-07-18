@@ -32,7 +32,6 @@ const TourDetails = () => {
   }, [tour]);
 
   const { totalRating, avgRating } = calculateAvgRating(reviews);
-  console.log(totalRating);
 
   return (
     <>

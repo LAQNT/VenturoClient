@@ -21,6 +21,8 @@
 
 .offers-card {
   display: flex;
+  justify-content: space-between;
+  gap: 2rem;
   align-items: center;
   text-align: center;
   border: 1px solid rgb(199, 215, 210);
@@ -30,16 +32,21 @@
 }
 
 .offers-card img {
-  max-height: 12rem;
+  max-height: 10rem;
   object-fit: fill;
 }
 
 .offers-card p {
-  font-size: 0.85rem;
+  font-size: 1.3rem;
 }
 
 .offers-card-subtitle {
   text-align: left;
+}
+
+.offers-card-subtitle h4 {
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 .services-list {

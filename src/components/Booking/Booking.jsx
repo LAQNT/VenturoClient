@@ -18,9 +18,6 @@ const Booking = ({ tour, avgRating }) => {
 
   const { username, id, email, token } = useContext(AuthContext);
 
-  console.log(id);
-  console.log(email);
-  console.log(username);
   const [booking, setBooking] = useState({
     userId: id,
     userEmail: email,
@@ -65,7 +62,6 @@ const Booking = ({ tour, avgRating }) => {
       alert(error.message);
     }
 
-    console.log(booking);
     navigate("/bookedTour");
   };
 
