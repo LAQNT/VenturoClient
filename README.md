@@ -16,6 +16,8 @@
 
 ✨ User can book a tour
 
+✨ Protected routes
+
 
 ## Technologies Used
 
@@ -44,6 +46,8 @@ Tour Details:
 
 ![image](https://github.com/LAQNT/VenturoClient/assets/119738902/456d3975-b240-4045-9b78-8415e9476910)
 
+Back Office:
+![image](https://github.com/LAQNT/VenturoClient/assets/119738902/1b5b8714-7c08-44c5-b8a6-7c0997a1f743)
 
 
 
