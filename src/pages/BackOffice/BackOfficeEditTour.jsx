@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import "../../styles/back-office.css";
+import { BASE_URL } from "../../utils/config";
 import TourFormBackOffice from "../../components/TourFormBackOffice/TourFormBackOffice";
 
 function BackOfficeEditTour() {
@@ -25,9 +26,7 @@ function BackOfficeEditTour() {
 
   const fetchTourData = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:3001/api/v1/tours/${tourId}`
-      );
+      const response = await axios.get(`${BASE_URL}/api/v1/tours/${tourId}`);
       const tourData = response.data.data;
       setFormActual(tourData);
       setFormData({
@@ -49,6 +48,7 @@ function BackOfficeEditTour() {
 
   useEffect(() => {
     fetchTourData();
+    // eslint-disable-next-line
   }, [tourId]);
 
   const handleInputChange = (e) => {
