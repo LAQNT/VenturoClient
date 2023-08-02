@@ -11,7 +11,7 @@ const Login = () => {
     password: undefined,
   });
 
-  const { dispatch, role } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {

@@ -11,9 +11,9 @@ const StarsReview = ({ avgRating, singleRating }) => {
     return stars;
   };
 
-  if (avgRating !== null && singleRating == undefined) {
+  if (avgRating !== null && singleRating === undefined) {
     return <div className="tour-rating">{renderStars(avgRating)}</div>;
-  } else if (singleRating !== undefined && avgRating == undefined) {
+  } else if (singleRating !== undefined && avgRating === undefined) {
     return <div className="tour-rating">{renderStars(singleRating)}</div>;
   } else {
     return null;

@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TourCard from "../../shared/TourCard";
-import axios from "axios";
 import { Col, Row, Container } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
 import useFetch from "../../hooks/useFetch";
 import { BASE_URL } from "./../../utils/config";
-import calculateAvgRating from "../../utils/avgRating";
 
 const FeaturedToursList = () => {
   const {
@@ -13,8 +11,6 @@ const FeaturedToursList = () => {
     loading,
     error,
   } = useFetch(`${BASE_URL}/tours/search/featuredTours`);
-
-  // const bestDealTours = featuredTours?.filter((tour) => tour.bestDeal === true);
 
   return (
     <>

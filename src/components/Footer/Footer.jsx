@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import "./footer.css";
 import logo from "../../assets/imgs/venturo-logo.png";
 
@@ -19,14 +19,23 @@ export const Footer = () => {
               <a
                 href="https://www.linkedin.com/in/laura-quintero-agudelo-a576a111a/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <i className="bi bi-linkedin"></i>
               </a>
-              <a href="https://github.com/LAQNT" target="_blank">
+              <a
+                href="https://github.com/LAQNT"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <i className="bi bi-github"></i>
               </a>
 
-              <a href="#" target="_blank">
+              <a
+                href="https://www.instagram.com/lauraquinteroa/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <i className="bi bi-instagram"></i>
               </a>
             </div>

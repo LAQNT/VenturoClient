@@ -1,9 +1,8 @@
-import { React, useState } from "react";
+import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import StarsReview from "../components/StarsReview/StarsReview";
 import "./tour-card.css";
-import avgRating from "../utils/avgRating";
 import calculateAvgRating from "../utils/avgRating";
 
 const TourCard = ({ tour }) => {

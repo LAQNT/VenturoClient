@@ -1,6 +1,6 @@
 import React from "react";
 import "./common-section.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import commonSectionImage from "../assets/imgs/CommonSection.jpg";
 import SearchBar from "../shared/SearchBar";
 

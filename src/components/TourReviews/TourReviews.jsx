@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import userImg from "../../assets/imgs/default_user.jpg";
-import axios from "axios";
 import "../../styles/tour-details.css";
 import { Row, Form, ListGroup, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import StarsReview from "../../components/StarsReview/StarsReview";
-import calculateAvgRating from "../../utils/avgRating";
 import useFetch from "../../hooks/useFetch";
 import { BASE_URL } from "../../utils/config";
 import { AuthContext } from "../../context/AuthContext";
@@ -14,7 +12,7 @@ function TourReviews() {
   const { id } = useParams();
   const [tourRating, setTourRating] = useState(null);
   const reviewMsgRef = useRef("");
-  const { username, token } = useContext(AuthContext);
+  const { username } = useContext(AuthContext);
 
   const { data: reviews } = useFetch(`${BASE_URL}/review/${id}/reviews`);
   const [allReviews, setAllReviews] = useState(reviews || []);

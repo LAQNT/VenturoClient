@@ -2,24 +2,22 @@ import React, { useRef } from "react";
 import { Container, Col, Form, FormGroup, Button } from "react-bootstrap";
 import "./search-bar.css";
 import { BASE_URL } from "./../utils/config";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const countryRef = useRef("");
   const maxDistanceRef = useRef(0);
   const groupRef = useRef(0);
-  // const difficultyRef = useRef();
   const navigate = useNavigate();
 
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo(0, 0);
+  // };
 
   const searchHandler = async () => {
     const country = countryRef.current.value;
     const maxDistance = maxDistanceRef.current.value;
     const group = groupRef.current.value;
-    // const difficulty = difficultyRef.current.value;
 
     if (country === "" || maxDistance === "" || group === "") {
       return alert("All fields are required");

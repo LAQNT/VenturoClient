@@ -3,7 +3,6 @@ import { Col } from "react-bootstrap";
 import "./service-card.css";
 
 import weatherImg from "../assets/imgs/ServiceWeather.jpg";
-import guideImg from "../assets/imgs/ServiceGuide.jpg";
 import customImg from "../assets/imgs/ServiceCustom.jpg";
 import ServiceCard from "./ServiceCard";
 

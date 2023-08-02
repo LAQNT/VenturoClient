@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 const userLocalStorage = localStorage.getItem("user")
   ? JSON.parse(localStorage.getItem("user"))
